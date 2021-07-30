@@ -1,0 +1,66 @@
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    p {
+      width: 250px;
+      height: 140px;
+      border: 3px solid black;
+    }
+
+    p:nth-child(1) {
+      /* 요소(element)의 크기보다 컨텐츠가 클 때 숨김처럼 */
+      /* overflow: 넘침 */
+      /* hidden: 숨김 */
+      overflow: hidden;
+      ;
+    }
+
+    /* 가로 스크롤은 구리기 때문에 잘 안씀 */
+    p:nth-child(2) {
+      overflow: scroll;
+    }
+
+    p:nth-child(3) {
+      overflow-y: scroll;
+    }
+
+    /* auto면 짧으면 스크롤 자체가 안생기고 길면생김 */
+    /* 그런데 문장이 틀보다 길면 무조건 y축 스크롤 쓰는게 좋음 */
+    /* 왜냐면 옆에 스크롤 공간이 있으면 좋고 없는게 좋을 경우가 있기에 */
+    /* 웬만하면 히든씀 */
+    p:nth-child(4) {
+      overflow: auto;
+    }
+
+    p:nth-child(5) {
+      overflow: hidden;
+      /* ellipsis: 생략 */
+      /* 컨텐츠가 내용 밖으로 넘어서면 말 줄임표(...) */
+      text-overflow: ellipsis;
+      /* 빈공간은 기본적으로 밑으로 내림 */
+      /* 밑으로 안내림, 옆으로 이어짐 */
+      white-space: nowrap;
+      height: 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ratione eos vero perspiciatis laboriosam totam illo.
+    Excepturi iusto eveniet quos voluptate, quo sequi odio omnis laboriosam. Totam ea tempora consequatur!</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ratione eos vero perspiciatis laboriosam totam illo.
+    Excepturi iusto eveniet quos voluptate, quo sequi odio omnis laboriosam. Totam ea tempora consequatur!</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ratione eos vero perspiciatis laboriosam totam illo.
+    Excepturi iusto eveniet quos voluptate, quo sequi odio omnis laboriosam. Totam ea tempora consequatur!</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ratione eos vero perspiciatis laboriosam totam illo.
+    Excepturi iusto eveniet quos voluptate, quo sequi odio omnis laboriosam. Totam ea tempora consequatur!</p>
+  <p title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad ratione eos vero perspiciatis laboriosam totam illo.
+  Excepturi iusto eveniet quos voluptate, quo sequi odio omnis laboriosam. Totam ea tempora consequatur!">Lorem ipsum
+    dolor sit amet consectetur adipisicing elit. Ad ratione eos vero perspiciatis laboriosam totam illo.
+    Excepturi iusto eveniet quos voluptate, quo sequi odio omnis laboriosam. Totam ea tempora consequatur!</p>
+
+</body>
+
+</html>

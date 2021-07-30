@@ -1,0 +1,35 @@
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .box {
+      width: 250px;
+      height: 200px;
+    }
+
+    .box:nth-child(1) {
+      /* inline은 크가기 없음, 즉 width.height를 설정하지 못함 */
+      /* inline 형식의 크기는 컨텐츠 크기만큼 */
+      display: inline;
+    }
+
+    .box:nth-child(2) {
+      /* inline 속성과 같이 왼쪽 -> 오른쪽 */
+      /* block과 같은 width/height를 설정할 수 있음 */
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">나랏말싸미 듕귁에 달아 문자와로 서르 사맛디 아니할쎄
+    이런 젼차로 어린 백셩이 니르고져 홀 배 이셔도
+    마참내 제 뜨들 시러펴디 몯 할 노미 하니라
+    내 이랄 위하야 어엿비 너겨 새로 스믈 여듧 짜랄 맹가노니
+    사람마다 해여 수비 니겨 날로 쑤메 뼌한킈 하고져 할따라미니라</div>
+  <div class="box">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit veniam, vel quos nostrum mollitia rerum
+    exercitationem sed ipsam hic? Vitae deserunt et ut nihil dicta atque iste similique, voluptas ipsa!</div>
+</body>
+
+</html>

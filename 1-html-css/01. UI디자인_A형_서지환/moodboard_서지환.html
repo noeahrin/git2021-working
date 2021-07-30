@@ -1,0 +1,161 @@
+<html>
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+  <style>
+    /* https://coolors.co/606c38-283618-fefae0-dda15e-bc6c25 */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Single Day', cursive;
+      width: 400px;
+      background-image: url("./img/background-image.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      background-position-x: center;
+      background-repeat: no-repeat;
+
+      display: grid;
+      gap: 0.5rem;
+      margin: 0 auto;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        "header   header"
+        "banner   banner"
+        "nav      image"
+        "content  content"
+        "color    color"
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    header {
+      grid-area: header;
+    }
+
+    header>h1 {
+      background-color: #f7b437bb;
+      color: salmon;
+      padding: 0.5rem;
+      margin: 0;
+      text-align: center;
+    }
+
+    .banner {
+      grid-area: banner;
+
+      height: 100px;
+      background-image: url("./img/banner-image.jpg");
+
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+
+      box-shadow: 0px 1px 5px #bc6c25;
+    }
+
+    nav {
+      grid-area: nav;
+      background-color: #fefae0;
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    nav>ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100px;
+      color: #283618;
+    }
+
+    .image {
+      grid-area: image;
+    }
+
+    article {
+      grid-area: content;
+      background-color: whitesmoke;
+      padding: 0.5rem;
+    }
+
+
+    .color-box {
+      grid-area: color;
+      display: flex;
+      height: 100px;
+    }
+
+    .color-box>div {
+      flex: 1 1 auto;
+    }
+
+    .color-box>div:nth-child(1) {
+      background-color: whitesmoke;
+    }
+
+    .color-box>div:nth-child(2) {
+      background-color: #f7b437bb;
+    }
+
+    .color-box>div:nth-child(3) {
+      background-color: rgb(241, 212, 212);
+    }
+
+    .color-box>div:nth-child(4) {
+      background-color: pink;
+    }
+
+    .color-box>div:nth-child(5) {
+      background-color: rgb(255, 244, 223);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 텍스트 스타일(h1) -->
+  <header>
+    <h1>내가 좋아하는 요리 3종 레시피</h1>
+  </header>
+  <!-- 대표 이미지(배너이미지)-->
+  <div class="banner">
+  </div>
+  <!-- 대표 문구(네비게이션) -->
+  <nav>
+    <ul>
+      <li>토마토계란볶음</li>
+      <li>콜라닭</li>
+      <li>칠리소스가지볶음</li>
+    </ul>
+  </nav>
+  <!-- 대표 이미지(컨텐트이미지) -->
+  <div class="image">
+    <img src="https://recipe1.ezmember.co.kr/cache/recipe/2021/04/22/1940a194a4148bc31f5be4e6049d5c8a1.jpg"
+      width="100%">
+  </div>
+  <!-- 텍스트 스타일(h2, h3, p) -->
+  <article>
+    <h2 style="margin: 0; padding: 0;">h2 제목입니다.</h2>
+    <h3 style="margin: 0; padding: 0;">h3 제목입니다.</h3>
+    <p style="margin: 0; padding: 0;">내용입니다.</p>
+  </article>
+  <!-- 컬러 스타일 -->
+  <div class="color-box">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+</body>
+
+</html>

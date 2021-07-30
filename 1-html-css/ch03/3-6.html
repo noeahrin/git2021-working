@@ -1,0 +1,46 @@
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .menu-item {
+      background-color: green;
+    }
+
+    /* 자손(자식) 선택자를 사용 */
+    /* 부모>자손(자식) */
+    /* 스타일은 자손에 적용 됨 */
+    /* 바로 밑에있는 얘를 쓰려면 > */
+    ul>li {
+      background-color: green;
+    }
+
+    /* 부모>자손(부모)>자손 */
+    /* ul>li>a {
+      color: antiquewhite;
+    } */
+
+    /* 후손 선택자를 사용 */
+    /* 부모 후손    부모 쓰고 한칸띄고 후산*/
+    ul a {
+      color: antiquewhite;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div>
+    <!-- div바로 하위 자식 얘들은 자손 children -->
+    <!-- div 하위는 다 후손이라고도 함 -->
+    <h1></h1>
+    <h2></h2>
+    <ul>
+      <li><a href="">Menu - 1</a></li>
+      <li><a href="">Menu - 2</a></li>
+      <li><a href="">Menu - 3</a></li>
+    </ul>
+  </div>
+</body>
+
+</html>

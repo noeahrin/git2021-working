@@ -1,0 +1,81 @@
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    .container {
+      display: flex;
+      margin: 20px 0px;
+      padding: 10px;
+      border: 1px solid red;
+    }
+
+    .item {
+      border: 1px solid black;
+      width: 100px;
+      height: 100px;
+      padding: 10px;
+      text-align: center;
+      line-height: 100px;
+    }
+
+    .container.row {
+      /* start 에서 end 로 가로방향 */
+      flex-direction: row;
+    }
+
+    .container.row-reverse {
+      /* flex-direction: flexitem 배치방향 설정 */
+      /* row-reverse: end부터 시작 */
+      /* 아랍어같은 경우엔 일반이 오른쪽시작 */
+      /* end 에서 start 로 가로방향 */
+      flex-direction: row-reverse;
+    }
+
+    .container.col {
+      /* start 에서 end 로 세로방향 */
+      flex-direction: column;
+    }
+
+    .container.col-reverse {
+      /* end 에서 start 로 세로방향 */
+      flex-direction: column-reverse;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- main axis(주축): flexbox에서 아이템이 배치되는 방향 -->
+  <!-- cross axis(교차축): 아이템이 배치되는 반대축 -->
+  <!-- 즉 row, row-reverse의 교차축은 column
+      column, column-reverse의 교차축은 row -->
+  <!-- 기본 방향은 row임 -->
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+  <div class="container row">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+  <div class="container row-reverse">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+  <div class="container col">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+  <div class="container col-reverse">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+
+</body>
+
+</html>
