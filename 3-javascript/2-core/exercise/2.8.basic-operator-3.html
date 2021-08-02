@@ -1,0 +1,23 @@
+<html>
+
+<body>
+  <script>
+    console.log("" + 1 + 0);    // 10, 문자열
+    console.log("" - 1 + 0);    // -1, 숫자
+    console.log(true + false);  // 1, true(1) + false(0) 
+    console.log(6 / "3");       // 2, /(나누기) 연산자로 인해 숫자로
+    console.log("2" * "3");     // 6, * 연산자로 인해 숫자로
+    console.log(4 + 5 + "px");  // 9px, 9 + 문자열 px -> 문자열
+    console.log("$" + 4 + 5);   // $45, 문자열 $4 + 5 -> 문자열
+    console.log("4" - 2);       // 2, - 연산자로 인해 숫자로
+    console.log("4px" - 2);     // NaN, 알파벳 들어간 문자열은 숫자로 변환 안됨
+    console.log(7 / 0);         // Infinity, 0으로 나눠서
+    console.log("  -9  " + 5);  //  -9  5, 문자열, 공백 여전히 존재
+    console.log("  -9  " - 5);  // -14, - 연산자로 인해 숫자로 변환되서 공백 사라짐
+    console.log(null + 1);      // 1, null은 숫자형으로 변환될 때 0으로
+    console.log(undefined + 1); // NaN, undifined는 숫자형으론 NaN
+    console.log(" \t \n" - 2);  // -2, \t 와 \n 은 공백을 만드는 문자라서 숫자변환은 길이0인 문자열로 취급되서 0
+  </script>
+</body>
+
+</html>

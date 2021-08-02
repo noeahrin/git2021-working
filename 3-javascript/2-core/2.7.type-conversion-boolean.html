@@ -1,0 +1,20 @@
+<html>
+
+<body>
+  <script>
+    console.log(Boolean("abc"));    // true
+    console.log(Boolean(1));        // true
+    console.log(Boolean(Infinity)); // true
+
+    // ---------------------false 값으로 변환 -------- 이것 이외들은 다 true  광장히 중요함
+    console.log(Boolean(""));     // false, 빈 문자열
+    console.log(Boolean(0));      // false, 숫자0
+
+    //엄청 중요한 것임
+    console.log(Boolean(undefined));  // false
+    console.log(Boolean(null));       // false
+    console.log(Boolean(NaN));        // false
+  </script>
+</body>
+
+</html>
