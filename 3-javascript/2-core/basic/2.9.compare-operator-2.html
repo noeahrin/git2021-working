@@ -1,0 +1,19 @@
+<html>
+
+<body>
+  <script>
+    // 사전식 순서(정렬)에 맞게 크기를 비교
+    // A ---- Z
+    // A < Z
+    // 정확하게 말하자면 문자에 대한 유니코드 코드값(숫자)를 비교한 것
+    // unicode laphabet range 구글 검색
+    // A(U+0041) < Z(U+005A)
+    // 소문자가 대문자보다 더 뒤에있음
+    console.log('Z' > 'A');         // true, Z 코트표가 더 뒤에있음
+    console.log('a' > 'A');         // true, 소문자 코드표가 더 뒤에있음
+
+    console.log('Glow' > 'Glee');   // true, 위 처럼 비교
+    console.log('Bee' > 'Be');      // true, 문자가 더 길음
+</body >
+
+</html >

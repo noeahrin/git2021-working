@@ -2,6 +2,9 @@
 
 <body>
   <script>
+    // + 있는데, 문자열이 껴있으면 문자열 결합 될거라고 생각해야됨
+    // -, /, * 은 수학연산으로 계산될거임
+
     console.log("" + 1 + 0);    // 10, 문자열
     console.log("" - 1 + 0);    // -1, 숫자
     console.log(true + false);  // 1, true(1) + false(0) 
@@ -16,7 +19,9 @@
     console.log("  -9  " - 5);  // -14, - 연산자로 인해 숫자로 변환되서 공백 사라짐
     console.log(null + 1);      // 1, null은 숫자형으로 변환될 때 0으로
     console.log(undefined + 1); // NaN, undifined는 숫자형으론 NaN
+    // 빈 값( \t: tab(2칸~8칸))은 0 - 2
     console.log(" \t \n" - 2);  // -2, \t 와 \n 은 공백을 만드는 문자라서 숫자변환은 길이0인 문자열로 취급되서 0
+    console.log(+(" \t \n")); // 0
   </script>
 </body>
 
