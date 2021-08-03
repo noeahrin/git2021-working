@@ -1,0 +1,23 @@
+<html>
+
+<body>
+  <script>
+    //아래 표현식에서 어떤 alert가 실행될까요?
+
+    //if(...) 안에 표현식이 있으면 어떤 일이 일어날까요?
+
+    // true || false -> true
+    // -1 || 0 -> -1
+    if (-1 || 0) alert('first');            // true 라서 실행 됨
+
+    // true && false -> false
+    // -1 && 0 -> 0
+    if (-1 && 0) alert('second');           // false 라서 실행 안 됨
+
+    // false || true 2 && true 3 -> true 2 && true 3 -> true 3
+    // null || -1 && 1 -> -1 && 1 -> 1
+    if (null || -1 && 1) alert('third');    // true 라서 실행 됨
+  </script>
+</body>
+
+</html>

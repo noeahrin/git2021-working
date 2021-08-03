@@ -1,0 +1,23 @@
+<html>
+
+<body>
+  <script>
+    let a = true;       // true
+    let b = "";         // false 로 판별
+
+    // !(not 연산): 논리값을 반대로 함
+    console.log(!a);    // fasle
+    console.log(!b);    // true
+
+    console.log(!!b);   // false
+
+    // !!: not 연산을 두번 붙이면 변수의 논리값(boolean)을 추출할 수 있다.
+    // b 가 false가 아니라 ""으로 빈 문자열로 false 로 판별 되는건데
+    // c 는 그런 b 에다 !! 를 함으로 온전한 변수의 논리값(boolean)을 바로 추출
+    let c = !!b;        // false값, 원래 변수의 논리값(boolean을 추출
+    // let c == Boolean(b);   // false
+    console.log(c);     // false
+  </script>
+</body>
+
+</html>

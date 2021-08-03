@@ -1,0 +1,16 @@
+<html>
+
+<body>
+  <script>
+
+    // 이렇게하면 alert 로 1이 뜨지만 콘솔창에는 undefined임
+    console.log(alert(1));
+    // 그래서 관호 안의 alert는 undefined로 false라서 
+    // false || true || false
+    alert(alert(1) || 2 || alert(3));
+    // 하지만 안쪽이 alert(1) 이라서 처음 1이 뜨고
+    // 그다음 2가 제일 밖의 alert로 인해 2가 출력
+  </script>
+</body>
+
+</html>
