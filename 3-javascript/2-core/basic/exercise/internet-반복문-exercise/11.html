@@ -1,0 +1,36 @@
+<html>
+
+<body>
+  <script>
+    // 11. 삼각형 출력하기 - pattern 1
+
+    //   // 높이(line)가 5
+    //   *
+    //   **
+    //   ***
+    //   ****
+    //   *****
+
+
+    // 방법 1
+    // let n = '', line = 5;
+    // for (let i = 0; i < line; i++) {
+    //   n += '*';
+    //   console.log(n);
+    // }
+
+    // 방법 2
+
+    let n = '', line = 5;
+    for (let i = line; i > 0; i--) {
+      for (let j = 0; j <= line - i; j++) {
+        n += '*';
+      }
+      n += '\n';
+    }
+    console.log(n);
+
+  </script>
+</body>
+
+</html>

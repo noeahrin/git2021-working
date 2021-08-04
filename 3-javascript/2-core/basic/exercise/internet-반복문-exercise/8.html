@@ -1,0 +1,31 @@
+<html>
+
+<body>
+  <script>
+    // 8. 1부터 20 미만의 정수 중에서 2 또는 3의 배수가 아닌 수의 총합을 구하시오.
+
+    // 73
+
+    // 방법 1
+    let sum = 0;
+    for (let i = 1; i < 20; i++) {
+      if (i % 2 == 0 || i % 3 == 0) {
+        sum = sum;
+      } else {
+        sum += i;
+      }
+    }
+    console.log(sum);
+
+    // 방법 2
+    let sum = 0;
+    for (let i = 1; i < 20; i++) {
+      if (!(i % 2 == 0 || i % 3 == 0)) {
+        sum += i;
+      }
+    }
+    console.log(sum);
+  </script>
+</body>
+
+</html>

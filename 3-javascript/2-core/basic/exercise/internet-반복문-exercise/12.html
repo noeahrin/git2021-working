@@ -1,0 +1,30 @@
+<html>
+
+<body>
+  <script>
+    // 12. 삼각형 출력하기 - pattern 2
+
+    //   *****
+    //    ****
+    //     ***
+    //      **
+    //       *
+
+    let n = '', line = 5;
+    for (let i = line; i > 0; i--) {
+      for (let j = 0; j < line - i; j++) {
+        n += ' ';
+      }
+      for (let k = 0; k < i; k++) {
+        n += '*';
+      }
+      n += '\n';
+    }
+    console.log(n);
+
+
+
+  </script>
+</body>
+
+</html>
