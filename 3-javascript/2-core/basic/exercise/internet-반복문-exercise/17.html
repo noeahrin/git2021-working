@@ -1,0 +1,46 @@
+<html>
+
+<body>
+  <script>
+    //       17. 다이아몬드 출력하기
+
+    //     *
+    //    ***
+    //   *****
+    //  *******
+    // *********
+    //  *******
+    //   *****
+    //    ***
+    //     *
+
+    let n = '', line = 9, m = (line + 1) / 2;
+    for (let i = m; i > 0; i--) {
+      for (let j = 0; j < i - 1; j++) {
+        n += ' ';
+      }
+      for (let k = 0; k < line - 2 * (i - 1); k++) {
+        n += '*';
+      }
+      for (let l = 0; l < i - 1; l++) {
+        n += ' ';
+      }
+      n += '\n';
+    }
+    for (let a = m - 1; a > 0; a--) {
+      for (let j = 0; j < m - a; j++) {
+        n += ' ';
+      }
+      for (let k = 0; k < 2 * a - 1; k++) {
+        n += '*';
+      }
+      for (let l = 0; l < m - a; l++) {
+        n += ' ';
+      }
+      n += '\n';
+    }
+    console.log(n);
+  </script>
+</body>
+
+</html>
