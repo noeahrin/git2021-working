@@ -2,25 +2,23 @@
 
 <body>
   <script>
-    //   15. 정삼각형 출력하기
+    //       16. 역정삼각형 출력하기
 
-    //     *
-    //    ***
-    //   *****
-    //  *******
     // *********
+    //  *******
+    //   *****
+    //    ***
+    //     *
 
     let n = '', line = 5, m = 2 * line - 1;
-
     for (let i = line; i > 0; i--) {
-
-      for (let j = 0; j < i - 1; j++) {
+      for (let j = 0; j < line - i; j++) {
         n += ' ';
       }
-      for (let k = 0; k < m - 2 * (i - 1); k++) {
+      for (let k = 0; k < 2 * i - 1; k++) {
         n += '*';
       }
-      for (let l = 0; l < i - 1; l++) {
+      for (let l = 0; l < line - i; l++) {
         n += ' ';
       }
       n += '\n';
