@@ -7,6 +7,9 @@
 
     const msg = "당신의 나이를 입력하세요.";
     const age = prompt(msg, 0);
+
+
+    // "", null 이런건 0의 값으로 나옴
     if (!(age >= 14 && age <= 90)) {
       alert('14세 미만이거나 90세를 초과하셨네요.');
     } else {

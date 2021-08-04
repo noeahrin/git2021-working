@@ -32,13 +32,13 @@
 
     const msg = "Who's there?"
     const logIn = prompt(msg, "");
-    if (logIn === "" || logIn === null) {
+    if (logIn == "" || logIn == null) {
       alert('Canceled');
-    } else if (logIn === "Admin") {
+    } else if (logIn == "Admin") {
       const passWord = prompt('Password?', "");
-      if (passWord === "" || passWord === null) {
+      if (passWord == "" || passWord == null) {
         alert('Canceled')
-      } else if (passWord === "TheMaster") {
+      } else if (passWord == "TheMaster") {
         alert('Welcome!');
       } else {
         alert('Wrong password');
