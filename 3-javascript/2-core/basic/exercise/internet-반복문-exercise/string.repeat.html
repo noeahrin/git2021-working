@@ -1,0 +1,35 @@
+<html>
+
+<body>
+  <script>
+
+
+    // "*".repeat(5) -> *****
+    // " ".repeat(5) -> "     " 
+
+
+
+    a1 = '*'.repeat(1);
+    a2 = '*'.repeat(3);
+    a3 = '*'.repeat(5);
+    a4 = '*'.repeat(7);
+    a5 = '*'.repeat(9);
+    b1 = ' '.repeat(1);
+    b2 = ' '.repeat(2);
+    b3 = ' '.repeat(3);
+    b4 = ' '.repeat(4);
+
+    first = b4 + a1 + b4;
+    second = b3 + a2 + b3;
+    third = b2 + a3 + b2;
+    fourth = b1 + a4 + b1;
+    fifth = a5;
+
+    sum = first + '\n' + second + '\n' + third + '\n' + fourth + '\n' + fifth
+    console.log(sum);
+
+
+  </script>
+</body>
+
+</html>
