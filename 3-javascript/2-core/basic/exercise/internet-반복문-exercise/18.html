@@ -1,0 +1,31 @@
+<html>
+
+<body>
+  <script>
+    //       18. 별찍기 심화
+
+    // **********
+    // ****  ****
+    // ***    ***
+    // **      **
+    // *        *
+
+    let n = '', line = 5;
+    for (let i = line; i > 0; i--) {
+      for (let j = 0; j < i; j++) {
+        n += '*';
+      }
+      for (let k = 0; k < 2 * (line - i); k++) {
+        n += ' ';
+      }
+
+      for (let l = 0; l < i; l++) {
+        n += '*';
+      }
+      n += '\n';
+    }
+    console.log(n);
+  </script>
+</body>
+
+</html>
