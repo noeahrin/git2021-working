@@ -1,0 +1,57 @@
+<html>
+
+<body>
+  <script>
+
+    // 매서드(method): 객체 내부의 함수
+    let user = {
+      name: "John",
+      age: 30,
+      // 매서드 함수
+      sayHi: function () {
+        alert("안녕하세요!");
+      }
+    };
+
+    user.sayHi();
+  </script>
+  <script>
+
+    let user = {
+      name: "John",
+      age: 30,
+    };
+    // 속성이 함수일 때 단축 표기법
+    sayHi() {
+      alert("안녕하세요!");
+    };
+    user.sayHi();
+  </script>
+  <script>
+    let user = {
+      name: "John",
+      age: 30,
+      phone: {
+        mobile: "010-1234-5678",
+        home: "02-1234-5678",
+        company: "031-1234-5678"
+      }
+    };
+    console.log(user.phone.mobile);
+  </script>
+  <script>
+    let user = {
+      name: "John",
+      age: 30,
+    };
+
+    // sayHi라는 속성을 만들고
+    user.sayHi = function () {
+      alert("안녕하세요!");
+    };
+
+    user.sayHi();
+  </script>
+</body>
+
+</html>

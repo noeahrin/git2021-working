@@ -1,0 +1,37 @@
+<html>
+
+<body>
+  <script>
+    // 함수 makeUser는 객체를 반환합니다.
+
+    // 이 객체의 ref에 접근하면 어떤 결과가 발생하고, 그 이유는 뭘까요 ?
+
+    // this가 객체 안에 있지만 함수 안에 있는걸 간과하면 안됨
+    function makeUser() {
+      return {
+        name: "John",
+        ref: this
+      };
+    };
+
+    let user = makeUser();
+    // Window가 뜸
+    console.log(user.ref);
+
+    console.log(user.ref.name); // 결과가 어떻게 될까요?
+    // 컨텍스트(content, 문맥)
+    // 자바스크립트에서 this는 런타임(실행시점의 컨텍스트)에 결정됩니다. 
+    // 메서드가 어디서 정의되었는지에 상관없이 
+    // this는 ‘점 앞의’ 객체가 무엇인가에 따라 ‘자유롭게’ 결정됩니다.
+
+
+    // 프로그램에는 window라는 가장 상위의 객체가 있음
+    // user.ref는 window 객체(js 최상위객체)이고
+    // makeUser는 window 객체에 함수로 생성된 것임
+
+    // 따라서 makeUser() 이거는 window.makeUser() 이렇게 실행된 거랑 같음
+    // 함수 실행 컨텍스트 window
+  </script>
+</body>
+
+</html>
