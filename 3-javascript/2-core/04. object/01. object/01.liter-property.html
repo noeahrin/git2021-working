@@ -1,0 +1,59 @@
+<html>
+
+<body>
+  <script>
+    // 객체(object):
+    // 여러가지 자료형의 데이터를 담을 수 있는 자료구조
+
+    // 객체를 생성하고 빈 객체로 초기화
+    let user0 = {};
+
+    // 2. 객체의 구조
+    // {속성: 값, 속성: 값}
+    // 속성(property)
+    // key-value pair(키-값 쌍)
+    // {key: value, key:value} 형태의 자료구조
+
+    let user1 = {
+      name: "John",
+      age: 30,    // trailing-comma 표준
+    }
+    // 이 두가지 속성이 담겨져 있는 user1이라는 자료구조를 만듬
+
+
+    // 3. 속성에 접근해서 값 가져오기
+    //객체명.속성명         <- 이게 기본이고
+    // 객체명["속성명"]     <- 이건 코드가 필요할 때 사용
+    console.log(user1.name);
+    console.log(user1["age"]);
+
+    // 4. 새로운 속성을 추가함
+    // 객체.없는속성명 = 값;
+    // 객체["없는속성명"] = 값;
+    user1.isAdmin = true;
+    user1["email"] = "john@gmail.com";
+    console.log(user1);
+
+    // 5. 속성을 제거
+    // delete 객체.속성명;
+    // delete 객체["email"];
+    delete user1.isAdmin;
+    delete user1["email"];
+    delete user1.age;
+    console.log("-- 속성 제거--");
+    console.log(user1);
+
+
+    // 객체는 메모리 공간이 2개로 나누어져 있음
+    // 하나는 user1이라면 다른 하나는 실제 객체 데이터가 있는 공간
+    // 왼쪽은 오른쪽의 데이터 주소를 가지고 있음 0s01이런식
+    // 오른쪽 실제 공간은 name: pete, age: 30 처럼 있음
+    // 오른쪽 새로운 nameL Hong, age:25 라는 걸 하면 왼쪽에서 끊고
+    // 새로운 0DA0 이런 주소로 새롭게 연결
+
+
+
+  </script>
+</body>
+
+</html>
