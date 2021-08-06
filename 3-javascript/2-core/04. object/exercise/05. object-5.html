@@ -30,11 +30,15 @@
 
     function multiplyNumeric(obj) {
       for (let prop in obj) {
-        if (typeof obj[prop] == 'number') {
+        console.log(typeof (menu[prop]));
+        // if (typeof obj[prop] == 'number') {
+        if (typeof obj[prop] != 'string') {
+
           obj[prop] *= 2;
         }
       }
     }
+
 
     // 함수 호출 전
     let menu = {
@@ -43,6 +47,7 @@
       title: "My menu"
     };
     console.log(menu);
+
 
     multiplyNumeric(menu);
     // 함수 호출 후
