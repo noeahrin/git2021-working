@@ -1,0 +1,80 @@
+<html>
+
+<body>
+  <script>
+    // 데이터를 순차적으로 밀어넣고, 들어간 순서대로 꺼내야 함
+
+    // 대기열(queue): FIFO(First In First Out)
+    // queue에 요소 추가: enqueue
+    // queue에 요소 추출: dequeue
+
+
+
+    // 자바 스크립트 object에서
+    //       |    prop(key)    :     value
+    // Queue |head X "0"      ->     "hong"          제거 후
+    //       |head   "1"      ->     "john"          이곳에 head가 옴
+    //       |       "2"      ->     "donald"
+    //       |       "3"      ->     "kim"
+    //       |       "4"      ->     "lee"
+    //      \/tail   "5"      ->     "park"
+    // 넣을 때는 key를 1씩 증가 시키면서 값을 삽입
+    // 뺄 때는 가장 앞쪽 value의 값을 꺼내고 key 속성 제거
+
+
+    // 맵(Map): key-value 형태의 자료구조, key를 문자 말고 다른 것 가능
+    // 연관 배열(associative array) 형식 중 하나이다.
+    let queue = new Map();
+    let head = 0; // 가장 앞쪽 key를 저장하는 변수
+    let tail = 0; // 가장 뒤쪽 key를 저장하는 변수
+
+    // queue에 요소(item) 추가, tail위치에 넣음
+    // object의 tail값의 속성을 만듦 "0", "1", "2"
+    queue.set(tail++, "hong"); // 맵.set(키, 값)
+    console.log(queue); // {0 => "hong"}
+    queue.set(tail++, "john");
+    console.log(queue); // {0 => "hong", 1 => "john"}
+    queue.set(tail++, "donald");
+    console.log(queue); // {0 => "hong", 1 => "john", 2 => "donald"}
+    queue.set(tail++, "kim");
+    console.log(queue); // {0 => "hong", 1 => "john", 2 => "donald", 3 => "kim"}
+    queue.set(tail++, "lee");
+    console.log(queue); // {0 => "hong", 1 => "john", 2 => "donald", 3 => "kim", 4 => "lee"}
+    queue.set(tail++, "park");
+    console.log(queue); // {0 => "hong", 1 => "john", 2 => "donald", 3 => "kim", 4 => "lee", "park"}
+
+    // queue에서 요소 꺼내기(dequeue)
+    // head위치에서 꺼내고 key 삭제
+    console.log(queue.get(head)); // 0, hong
+    queue.delete(head++);     // 0
+    console.log(queue); // {1 => "john", 2 => "donald", 3 => "kim", 4 => "lee", 5 => "park"}
+
+    console.log(queue.get(head)); // 1, john
+    queue.delete(head++);     // 1
+    console.log(queue); // {2 => "donald", 3 => "kim", 4 => "lee", 5 => "park"}
+
+    console.log(queue.get(head)); // 2, donald
+    queue.delete(head++);     // 2
+    console.log(queue); // {3 => "kim", 4 => "lee", 5 => "park"}
+
+    console.log(queue.get(head)); // 3, kim
+    queue.delete(head++);     // 3
+    console.log(queue); // {4 => "lee", 5 => "park"}
+
+    console.log(queue.get(head)); // 4, lee
+    queue.delete(head++);     // 4
+    console.log(queue); // {5 => "park"}
+
+    console.log(queue.get(head)); // 5, park
+    queue.delete(head++);     // 5
+    console.log(queue); // {}
+
+    // push shift 와의 차이점은 object Map은 각 요소에 번호표를 매기고 필요할 때 
+    // 그 번호를 호출하여 요소를 불러들이는 것, 즉 줄을 설 필요가 없음
+    // 즉 키 값에 따라 정렬하지 않음, 추가한 순서대로만 만들어짐
+    // queue 크기
+    console.log(queue.size);  // 0
+  </script>
+</body>
+
+</html>
