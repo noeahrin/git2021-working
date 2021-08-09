@@ -1,7 +1,7 @@
 <html>
 
 <body>
-  <!-- <script>
+  <script>
 
     // 입력한 숫자의 합 구하기
 
@@ -18,11 +18,10 @@
       let sum = 0;
       let num = [];
       while (true) {
-        let elm = +prompt('숫자를 입력해 주세요:', '');
+        let elm = prompt('숫자를 입력해 주세요:', '');
         console.log(typeof elm);
-        if (elm == 0) {
-          num.push(Number(elm));
-        } else if (elm === '' || !elm) {
+
+        if (!+elm && String(elm) != '0') {
           break;
         } else {
           num.push(Number(elm));
@@ -38,9 +37,8 @@
 
     sumInput();
 
-    let n
-  </script> -->
-  <script>
+  </script>
+  <!-- <script>
     function sumInput() {
       let arr = [];
 
@@ -60,7 +58,7 @@
       return sum;
     }
     console.log(sumInput());
-  </script>
+  </script> -->
 </body>
 
 </html>
