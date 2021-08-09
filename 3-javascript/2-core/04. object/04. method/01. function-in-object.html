@@ -20,11 +20,13 @@
     let user = {
       name: "John",
       age: 30,
+
+      // 속성이 함수일 때 단축 표기법
+      sayHi() {
+        alert("안녕하세요!");
+      }
     };
-    // 속성이 함수일 때 단축 표기법
-    sayHi() {
-      alert("안녕하세요!");
-    };
+
     user.sayHi();
   </script>
   <script>

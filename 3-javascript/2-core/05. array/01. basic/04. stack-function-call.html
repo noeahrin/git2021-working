@@ -1,0 +1,26 @@
+<html>
+
+<body>
+  <script>
+    // 콜 스택(call stack): 함수 호출 -> 실행 stack 자fy구조에 넣어서 실행됨
+    // 함수 호출하면 가장 나중에 호출한 함수가 실행
+    function a() {
+      b();              // a 함수에서 b 함수 호출
+      console.log("a");
+    }
+    function b() {
+      c();              // b 함수에서 c 함수 호출
+      console.log("b");
+    }
+    function c() {
+
+      console.log("c");
+    }
+    a();
+
+    // push 하면 제일 밑에 a() 그다음 b() 그다음 c() 이렇게 stack 구조로 쌓임
+    // pop 하면 C() log c 나옴과 동시에 삭제, 그다음 b() log b, 마지막 a() log a
+  </script>
+</body>
+
+</html>

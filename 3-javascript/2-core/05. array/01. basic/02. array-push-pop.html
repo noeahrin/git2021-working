@@ -1,0 +1,61 @@
+<html>
+
+<body>
+  <script>
+    //["hong", "john", "donald", "kim", "lee"]
+
+    // 배열에 요소 추가          array-1처럼 저렇게 만들어 놓고 쓸 수 있겠지만
+    let arr = [];
+    // array에는 기본적으로 push 있음
+    arr.push("hong"); // 가장 뒤쪽에 추가됨
+    console.log(arr);
+    arr.push("john");
+    console.log(arr);
+    arr.push("donald");
+    console.log(arr);
+    arr.push("kim");
+    console.log(arr);
+    arr.push("lee");
+    console.log(arr);
+    // 처음에 arr[5] 이렇게 5개 뜨는데 F5 새로고침 누르면 됨
+    // ["hong"]
+    // ["hong", "john"]
+    // ["hong", "john", "donald"]
+    // ["hong", "john", "donald", "kim"]
+    // ["hong", "john", "donald", "kim", "lee"]
+
+
+    // 배열 요소에 접근
+    // 배열명[번호]
+    // 이름 1개로 여러 개의 데이터를 번호로 접근한다  
+    // -> 내부 데이터가 번호 순서대로 되어 있음   아닌 것도 있음
+    console.log(arr[0]);  // arr이라는 이름 1개
+    console.log(arr[1]);
+    console.log(arr[2]);
+    console.log(arr[3]);
+    console.log(arr[4]);
+    // hong
+    // john
+    // donald
+    // kim
+    // lee
+
+
+    // 배열 요소 변경
+    // 배열명[반호] = 값
+    arr[0] = 'park';
+    console.log(arr);
+    //["park", "john", "donald", "kim", "lee"]
+    console.log(arr.length);
+    // 배열크기 5
+
+
+    // 배열 요소 꺼내기 및 삭제(뒤쪽)
+    console.log(arr.pop());
+    console.log(arr);
+    // lee
+    // ["park", "john", "donald", "kim"]
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<html>
+
+<body>
+  <script>
+    // "hong", "john", "donald", "kim", "lee"]
+
+    let arr = [];
+
+    // 넣을 때는 앞쪽에 unshift
+    arr.unshift("kim");
+    console.log(arr); // ["kim"]
+    arr.unshift("lee");
+    console.log(arr); // ["lee", "kim"]
+    arr.unshift("donald");
+    console.log(arr); // ["donald", "lee", "kim"]
+    arr.unshift("john");
+    console.log(arr); // ["john", "donald", "lee", "kim"]
+    arr.unshift("hong");
+    console.log(arr); // ["hong", "john", "donald", "lee", "kim"]
+
+    // 꺼낼 때는 앞쪽에서 shift
+    console.log(arr.shift()); // hong
+    console.log(arr); // ["john", "donald", "lee", "kim"]
+    console.log(arr.shift()); // john
+    console.log(arr); // ["donald", "lee", "kim"]
+    console.log(arr.shift()); // donald
+    console.log(arr); // ["lee", "kim"]
+    console.log(arr.shift()); // lee
+    console.log(arr); // ["kim"]
+    console.log(arr.shift()); // kim
+    console.log(arr); // []
+
+
+    // 큐(대기열, Queue)   FIFO (First-In-First-Out)
+    // (dequeue) <- | 0  1  2  3  4 | <- push (enqueue)
+
+    // unshift : | 3  2  1  0 | -> pop
+
+    // shift <- | 0  1  2  3  4 | 하면 | 1  2  3  4 | 이렇게 되는데
+    // 0이 빠지면서 1 2 3 4 가 다 앞으로 옮겨 짐    그래서 성능이 떨어짐
+    // 즉 성능 면에서 push/pop 은 빠르지만 unshift/shift는 느리다.
+
+    // 자바 스크립트 object에서
+    //       |  prop(key)    :     value
+    // Queue |     "0"      ->     "hong"
+    //       |     "1"      ->     "john"
+    //       |     "2"      ->     "donald"
+    //       |     "3"      ->     "kim"
+    //      \/     "4"      ->     "lee"
+
+
+
+  </script>
+</body>
+
+</html>
