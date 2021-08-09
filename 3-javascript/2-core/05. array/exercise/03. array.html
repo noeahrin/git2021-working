@@ -7,13 +7,13 @@
 
     // 아래 코드를 실행하면 어떤 결과가 나올까요? 그리고 그 이유는 무엇일까요?
 
-    let arr = ["a", "b"];
+    let arr = ["a", "b"]; // 배열은 꼭 같은 타임이 아니라 {id: 1, name: "john"}, 1 이렇게 달라도 됨
 
     arr.push(function () {
       alert(this);
     })
 
-    arr[2](); // ?
+    arr[2](); // ?   array 자체가
 
     // arr[0] == "a";
     // arr[1] == "b";
@@ -24,6 +24,14 @@
     //              alert(this);
     //            }
 
+  </script>
+  <script>
+    let arr = ["a", "b", { id: 1, name: "john" }, 1];
+
+    // arr. push(() => {
+    //   console.log(this);
+    // })
+    arr[2]()
   </script>
 </body>
 
