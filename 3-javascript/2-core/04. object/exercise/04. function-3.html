@@ -8,9 +8,11 @@
       step: 0,
       up() {
         this.step++;
+        return this; // 추가한거
       },
       down() {
         this.step--;
+        return this; // 추가한거
       },
       showStep: function () { // 사다리에서 몇 번째 단에 올라와 있는지 보여줌
         alert(this.step);
@@ -28,7 +30,36 @@
 
     ladder.up().up().down().showStep(); // 1
 
-    참고로 이런 방식은 자바스크립트 라이브러리에서 널리 사용됩니다.
+    // 참고로 이런 방식은 자바스크립트 라이브러리에서 널리 사용됩니다.
+
+    // 함수를 실행하면 반환값으로 치환 된다.
+    ladder.up() // == ladder(this)
+
+    ladder
+      .up()  // ladder.up()의 반환값이 ladder 객체
+      .up()
+      .down()
+      .up()
+
+
+
+    // ladder.up().up().down().showStep();
+
+    // up() 함수는 ladder로(안에서) 호출
+
+    // ladder.up().up() 이렇게 쓰려면 ladder.up() == ladder 이렇게 되어야 함
+
+    // 함수의 실행은 함수와 반환값과 같음
+
+    // ladder.up() 이렇게 실행하고 결과를 치환
+    // 결국에는 실행하면 리턴값 0이 됨 즉 ladder.up() == 0 이렇게 출력결과가 나옴
+    // console.log(ladder.up()); -> 0
+
+    // console.reuslt = ladder.up();
+    // console.log(result);
+
+    // console.log(ladder().up()); 이렇게 찍으면 반환결과가 
+
   </script>
 </body>
 
