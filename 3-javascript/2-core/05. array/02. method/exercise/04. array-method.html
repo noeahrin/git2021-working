@@ -2,7 +2,26 @@
 
 <body>
   <script>
+    // 내림차순으로 정렬하기
+    // 중요도: 4
+    // let arr = [5, 2, 1, -10, 8];
 
+    // // 요소를 내림차순으로 정렬해주는 코드를 여기에 작성해보세요.
+
+    // alert(arr); // 8, 5, 2, 1, -10
+
+    let arr = [5, 2, 1, -10, 8];
+
+    for (let i = 0; i < arr.length - 1; i++) {
+      for (let j = 0; j < (arr.length - 1) - i; j++) {
+        if (arr[j] < arr[j + 1]) {
+          let temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+        }
+      }
+    }
+    console.log(arr);
   </script>
 </body>
 
