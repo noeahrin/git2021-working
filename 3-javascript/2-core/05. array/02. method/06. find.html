@@ -1,0 +1,36 @@
+<html>
+
+<body>
+  <script>
+    // find() 매서드는 주어진 판별 함수를 만족하는 첫 번째 요소의 값을 
+    // 반환합니다. 그런 요소가 없다면 undefined 를 반환합니다.
+
+    const array1 = [5, 12, 8, 130, 44];
+
+    const found = arr1.find(element => element > 10);
+
+    console.log(found); // expected output: 12   더 안나옴
+    // 즉 한번만 반환
+
+
+
+    let users = [
+      { id: 1, name: "John" },
+      { id: 2, name: "Pete" },
+      { id: 3, name: "Mary" }
+    ];
+
+    // 베열.find(판별함수) 이렇게 find 뒤에 판별함수가 나오는데
+    // 판별함수의 반환값이 true인 요소를 찾아서 반환
+
+    // 매개변수가 하나면 생략 가능, 그리고 중괄호랑 return 동시에 생략 가능
+    let user = users.find(item => item.id == 1);
+    // let user = users.find(item => {
+    //   return item.id == 1
+    // });
+
+    alert(user.name); // John
+  </script>
+</body>
+
+</html>

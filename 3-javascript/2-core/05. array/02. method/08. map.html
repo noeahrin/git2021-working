@@ -1,0 +1,29 @@
+<html>
+
+<body>
+  <script>
+    // 프론트앤드에서는 map 아니면 filter로 생각해야함
+    // 배열을 변형시키거나 요소를 재 정렬해주는 매서드
+    // 원래 배열의 구조를 바꿔서 처리할 때 사용
+    let arr = ["Bilbo", "Gandalf", "Nazgul"];
+
+    // map: 동일한 크기의 새롭게 변형된 배열을 반환
+    // map(함수): 함수의 반환값이 새로운 요소
+    // let lengths = arr.map(item => item.length); // 문자열의 길이
+
+    let lengths = arr.map((item, index) =>
+      // 반환 값이 새로운 배열의 요소
+      ({ id: index + 1, name: item })
+    );
+
+    // [
+    //   { id: 1, name: "Bilbo" },
+    //   { id: 2, name: "Gandalf" },
+    //   { id: 3, name: "Nazgul" },
+    // ]
+
+    console.log(lengths); // [5, 7, 6]
+  </script>
+</body>
+
+</html>

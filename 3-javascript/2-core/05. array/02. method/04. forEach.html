@@ -1,0 +1,27 @@
+<html>
+
+<body>
+  <script>
+
+    let arr = ["Bilbo", "Gandalf", "Nazgul"];
+
+    // arr.forEach((item, index, array) => {
+    //   alert(`${item} is at index ${index} in ${array}`);
+    // });
+
+    // 자주 사용하는건 1개짜리, 이렇게 쓸 수 있음
+    // 근데 이건 forEach를 할 필요가 없음
+    arr.forEach(item => {
+      console.log(item);
+    });
+
+
+    // forEach가 필요할 때는 이렇 때
+    // 배열.forEach((요소변수, 인덱스변수, [현재배열변수]) => {처리 할 구문});
+    arr.forEach((item, index) => {
+      console.log(item, index);
+    });
+  </script>
+</body>
+
+</html>
