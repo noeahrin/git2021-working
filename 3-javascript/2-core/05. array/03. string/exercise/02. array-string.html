@@ -15,6 +15,9 @@
 
     function checkSpam(str) {
       let newStr = str.toLowerCase();
+      // arr.indexOf(item, from)는 인덱스 from부터 시작해 item(요소)을 찾습니다.요소를 발견하면 해당 요소의 인덱스를 반환하고, 발견하지 못했으면 - 1을 반환합니다.
+      // arr.lastIndexOf(item, from)는 위 메서드와 동일한 기능을 하는데, 검색을 끝에서부터 시작한다는 점만 다릅니다.
+      // arr.includes(item, from)는 인덱스 from부터 시작해 item이 있는지를 검색하는데, 해당하는 요소를 발견하면 true를 반환합니다.
       if (newStr.indexOf('viagra') != -1 || newStr.indexOf('xxx') != -1) {
         return true;
       } else {
@@ -26,6 +29,22 @@
     console.log(checkSpam('free xxxxx'));
     console.log(checkSpam("innocent rabbit"));
 
+  </script>
+  <script>
+    function checkSpam(str) {
+      let strLower = str.toLowerCase();
+      for (let keyword of ['viagra', 'xxx']) {
+        // includes 쓰면 true/false
+        if (strLower.icludes(keyword)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    console.log(checkSpam('buy ViAgRA now'));
+    console.log(checkSpam('free xxxxx'));
+    console.log(checkSpam("innocent rabbit"));
   </script>
 </body>
 

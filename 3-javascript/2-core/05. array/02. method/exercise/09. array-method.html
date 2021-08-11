@@ -22,20 +22,58 @@
     // alert(arr[1].name); // Mary
     // alert(arr[2].name); // Pete
 
+    // function sortByAge(users) {
+    //   for (let i = 0; i < arr.length - 1; i++) {
+    //     for (let j = 0; j < arr.length - 1 - i; j++) {
+    //       if (arr[j].age > arr[j + 1].age) {
+    //         let temp = arr[j];
+    //         arr[j] = arr[j + 1];
+    //         arr[j + 1] = temp;
+    //       }
+    //     }
+    //   }
+
+    // let john = { name: "John", age: 25 };
+    // let pete = { name: "Pete", age: 30 };
+    // let mary = { name: "Mary", age: 28 };
+
+    // let arr = [pete, john, mary];
+
+    // sortByAge(arr);
+
+    // // now: [john, mary, pete]
+    // console.log(arr[0].name); // John
+    // console.log(arr[1].name); // Mary
+    // console.log(arr[2].name); // Pete
+  </script>
+  <script>
+
     function sortByAge(users) {
-      for (let i = 0; i < arr.length - 1; i++) {
-        for (let j = 0; j < arr.length - 1 - i; j++) {
-          if (arr[j].age > arr[j + 1].age) {
-            let temp = arr[j];
-            arr[j] = arr[j + 1];
-            arr[j + 1] = temp;
-          }
-        }
+      arr.sort((a, b) => a.age - b.age);
+    }
+
+    let john = { name: "John", age: 25 };
+    let pete = { name: "Pete", age: 30 };
+    let mary = { name: "Mary", age: 28 };
+
+    let arr = [pete, john, mary]
+
+    // now: [john, mary, pete]
+    console.log(arr[0].name); // John
+    console.log(arr[1].name); // Mary
+    console.log(arr[2].name); // Pete
+  </script>
+  <!-- <script>
+
+      ///////////////// 잘 안됨
+    function sortByKey(arr, key) {
+      if (typeof arr[0][key] == "number") {
+        arr.sort((a, b) => a[key] - b[key])
+      } else if (typeof arr[0][key] == "string") {
+        arr.sort((a, b) => a[key].localeCompare(b[key]))
+      } else {
+        arr.sort((a, b) => Number(a[key]) - Number(b[key]))
       }
-      // function sortByAge(arr) {
-      //   arr.sort((a, b) => a.age - b.age);
-      // }
-      return arr;
     }
 
     let john = { name: "John", age: 25 };
@@ -45,12 +83,17 @@
     let arr = [pete, john, mary];
 
     sortByAge(arr);
+    sortByKey(arr, "name")
+    console.log(arr);
+    sortByKey(arr, "age")
+    console.log(arr);
 
     // now: [john, mary, pete]
-    console.log(arr[0].name); // John
-    console.log(arr[1].name); // Mary
-    console.log(arr[2].name); // Pete
-  </script>
+    // console.log(arr[0].name); // John
+    // console.log(arr[1].name); // Mary
+    // console.log(arr[2].name); // Pete
+  </script> -->
+
 </body>
 
 </html>

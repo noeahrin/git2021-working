@@ -8,8 +8,13 @@
 
     //   ucFirst("john") == "John";
 
+    // 지금 매개변수 str 이 문자열인지 아닌지 모르기 떄문에
+    // toUpperCase 같은 자동완성이 안뜸
     function ucFirst(str) {
+      str.toLowerCase();
       return str[0].toUpperCase() + str.slice(1);
+      // 첫번쨰 글자를 대문자 + 두번째글자부터 마지막글자까지 자름
+      // return str[0].toUpperCase() + str.substr(1);  // substr(위치, index);
     }
 
     console.log(ucFirst("john"));

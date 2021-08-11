@@ -16,6 +16,7 @@
     // camelize("-webkit-transition") == 'WebkitTransition';
     // 힌트: split을 사용해 문자열을 배열로 바꾼 다음 join을 사용해 다시 합치면 됩니다.
 
+    // a-b-c 형태를 ke-bab-case 라고 함
     function camelize(str) {
       let arr1 = str.split("-");
       let upperWord;
@@ -27,13 +28,41 @@
         arr2.push(upperWord);
       }
       let finWord = arr2.join('');
-      console.log(finWord);
+      let lastWord = finWord[0].toLowerCase() + finWord.substr(1);
+      console.log(lastWord);
     }
     camelize("background-color");
     camelize("list-style-image");
     camelize("-webkit-transition");
+  </script>
+  <script>
+    // 케밥케이스 문자열을 카멜케이스 문자열로
+    function camelize(str) {
+      // - 구분자로 문자열 나눠서 배열화
+      let strArr = str.split("-");
 
+      // 첫번째 반복
+      // acc = ""
+      // item = "background"
+      // index = 0
+      //acc = acc + "background"
 
+      // 두번째 반복
+      // acc = "background"
+      // item = "color"
+      // index = 1
+      //acc = acc + "color"
+
+      // 최종 반환값
+      // acc = "backgroundColor"
+
+      return strArr.reduce((acc, item, index) =>
+        acc + (index == 0 ? item : item[0].toUpperCase() + item.substr(1))
+        , "")
+    }
+    console.log(camelize("background-color"));
+    console.log(camelize("list-style-image"));
+    console.log(camelize("-webkit-transition"));
   </script>
 </body>
 
