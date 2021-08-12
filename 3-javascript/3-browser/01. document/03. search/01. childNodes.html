@@ -1,0 +1,34 @@
+<html>
+
+<body>
+  <div>시작</div>
+
+  <ul>
+    <li>
+      <b>항목</b>
+    </li>
+  </ul>
+  <!-- script 태그를 가장 하단에 위치 -->
+  <!-- 보통 제어하려면 뒤에 와야되기 떄문에 보통 script를 /body 바로 위에 씀 -->
+  <script>
+    // body 밑에 있는 하위 노드들을 탐색
+    for (let node of document.body.childNodes) {
+      console.log(node);  // 주석도 노드안에 들어가 있음
+      // childNodes 컬렉션은 텍스트 노드를 포함한 모든 자식 노드를 담고 있습니다.
+    }
+
+    // 첫번째 자식노드, 마지막 자식노드
+    console.log(document.body.firstChild);  // #text
+    console.log(document.body.lastChild);   // <script> ... /script>
+
+    // for-of: 배열, iterable(반복탐색가능한 객체에 사용한다)
+
+
+    // children 하면 body 밑에 있는 하위 요소(element) 태그들을 탐색
+    for (let elem of document.body.children) {
+      alert(elem); // DIV, UL, DIV, SCRIPT
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!-- 형제 노드에 관한 질문
+중요도: 5
+임의의 DOM 요소 노드 elem이 있다고 가정해봅시다.
+
+elem.lastChild.nextSibling은 항상 null일까요?
+elem.children[0].previousSibling은 항상 null일까요? -->
+
+<html>
+
+<body>
+  <div>시작</div>
+  <ul>
+    <li>
+      <b>항목</b>
+    </li>
+  </ul>
+</body>
+<script>
+// lastchild는 마지막이라서 nextsibling이 없음 그래서 null
+// children[0]은 요소태그의 첫번째는 맞지만 firstchild는 아니라서
+// previousSibling을 하면 firstchild가 나옴. 예를들면 #text  그레서 null아님
+</script>
+
+</html>

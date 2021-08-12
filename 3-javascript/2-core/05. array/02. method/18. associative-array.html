@@ -3,17 +3,53 @@
 <body>
   <script>
 
-
-
+    // id == 6인 데이터를 조회?
+    // 이진탐색이면 O(logn) -> 항이 8개면 평균적으로 3번 탐색(1 ~ 3번) 2 ^ 3 = 8
+    // 중간값 4 -> 6
     let arr = [
       { id: 1, name: 'kim' },
       { id: 2, name: 'lee' },
       { id: 3, name: 'park' },
-      { id: 4, name: 'john' },
-      { id: 5, name: 'donald' },
-      { id: 6, name: 'pete' },
-      { id: 7, name: 'kang' },
+      // { id: 4, name: 'hong' },   중간에 집어넣으려면 arr.splice(3, 0, {...})
+      // 뒤에 데이터들이 알아서 밀려감 -> 안좋음 왜냐하면 뒤에가 한칸씩 전부 밀려서
+      { id: 5, name: 'john' },
+      { id: 6, name: 'donald' },
+      { id: 7, name: 'pete' },
+      { id: 8, name: 'kang' },
     ];
+    //   배열은 중간에 넣으면 한칸씩 다 뒤로 밀려감
+
+    // associative array(연관배열)
+    // Java에서는 map, Python에서는 dictionary, javascript에서는 object
+
+    // 특정 값으로 데ㅇ터를 검색해야 한다면 연관 배열 형태의 데이터 구조(key-value)를 이용
+    // 애초에 데이터를 짤떄 이런식으로 만들어야 함
+    let map = {
+      1: { id: 1, name: 'kim' },
+      2: { id: 2, name: 'lee' },
+      3: { id: 3, name: 'park' },
+      // 4: { id: 4, name: 'hong' },  중간에 집어넣으려면 map[4] = {...}
+      // 속성값은 순차적으로 들어가 있지 않음, 특정 위치에 바로 넣을 수 있음.
+      5: { id: 5, name: 'john' },
+      6: { id: 6, name: 'donald' },
+      7: { id: 7, name: 'pete' },
+      8: { id: 8, name: 'kang' },
+    }
+    // object는 보이는건 정렬이지만 안에 key들의 실제 데이터구조는 순차적으로
+    // 저장되어있지 않아서 빈 곳이 있으면 그냥 아무 공간에다가 집어 넣어버림
+
+
+    // 연관배열의 탐색 연산 복잡도 O(1)
+    map[6]; // { id: 6, name: 'donald' };
+
+    // 연관배열의 추가 연산 복잡도 O(1), 빈 메모리 공간 아무데나 끼워 넣음
+    map[4] = { id: 4, name: 'hong' }
+
+    // 사용자id, 게시글 번호, 고객 번호, 고객연락처 탐색해야함
+    // 원래 데이터 그조를 연관배열로 만듦
+
+    // 현재 데이터 구조들이 이렇게 되어있는게 많음
+    // DB Edgines Ranking 검색
   </script>
 </body>
 

@@ -1,0 +1,26 @@
+<html>
+
+<body>
+  <div>시작</div>
+  <ul>
+    <li>
+      <b>항목</b>
+    </li>
+  </ul>
+  <script>
+    console.log(document.body.childNodes[1]);  // <div>시작</div>
+
+    const nodePar = document.body.childNodes[1];
+
+    // 노드.parentNode: 부모 노드를 탐색
+    console.log(nodePar.parentNode);  // body
+
+    // 노드.nextSibling/노드.previousSibling: 다음/이전 노드 탐색
+    console.log(nodePar.nextSibling); // #text "\n "
+    console.log(nodePar.nextSibling.nextSibling); // ul
+    console.log(nodePar.previousSibling); // #text "\n "
+
+  </script>
+</body>
+
+</html>
