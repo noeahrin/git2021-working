@@ -18,11 +18,14 @@
         <td>Age:</td>
         <td id="age-list">
           <label>
-            <input type="radio" name="age" value="young">less than 18</label>
+            <input type="radio" name="age" value="young">less than 18
+          </label>
           <label>
-            <input type="radio" name="age" value="mature">18-50</label>
+            <input type="radio" name="age" value="mature">18-50
+          </label>
           <label>
-            <input type="radio" name="age" value="senior">more than 50</label>
+            <input type="radio" name="age" value="senior">more than 50
+          </label>
         </td>
       </tr>
 
@@ -67,11 +70,75 @@
   const formSearch = document.getElementsByName('search')[0];
   console.log(formSearch);
 
+  // ('form>input')[0];
   const formFirstInput = document.querySelector('form>label>input');
   console.log(formFirstInput);
 
   const formLastInput = document.querySelector('form>input');
   console.log(formLastInput);
+</script>
+<script>
+  const table = document.querySelector('#age-table');
+  console.log(table);
+
+  const labels = table.querySelectorAll('label');
+  console.log(labels);
+
+  const td = table.querySelector('td');
+  console.log(td);
+
+  const form = document.querySelector('form[name="search"]');
+  console.log(form);
+
+  // 2개의 form을 선택
+  const forms = document.querySelectorAll('form');
+  console.log(forms);
+
+  // 첫번쨰 iput만 배열에 넣음
+  const firstInputs = [];
+  for (let form of forms) {
+    firstInputs.push(form.querySelector('input'));
+  }
+  console.log(firstInputs);
+
+  // 마지막 input만 배열에 넣음
+  const lastInputs = [];
+  for (let form of forms) {
+    const inputs = form.querySelectorAll('input');
+    lastInputs.push(inputs[inputs.length - 1]);
+  }
+  console.log(lastInputs);
+</script>
+<script>
+  // 1. `id="age-table"`인 테이블
+  let table = document.getElementById('age-table')
+
+  // 2. 테이블 내의 `label` 요소 모두
+  table.getElementsByTagName('label')
+  // 또는
+  document.querySelectorAll('#age-table label')
+
+  // 3. 테이블 내의 첫 번째 `td`(Age가 적힌 곳)
+  table.rows[0].cells[0]
+  // 또는
+  table.getElementsByTagName('td')[0]
+  // 또는
+  table.querySelector('td')
+
+  // 4. `name="search"`인 `form`
+  // name이 "search"인 요소는 문서에 단 하나뿐이라고 가정합시다.
+  let form = document.getElementsByName('search')[0]
+  // from을 정확히 지정해 줄 수도 있습니다.
+  document.querySelector('form[name="search"]')
+
+  // 5. 폼의 첫 번째 `input`
+  form.getElementsByTagName('input')[0]
+  // 또는
+  form.querySelector('input')
+
+  // 6. 폼의 마지막 `input`
+  let inputs = form.querySelectorAll('input') // 모든 input 요소를 찾교
+  inputs[inputs.length - 1] // 마지막 요소를 얻어냅니다.
 </script>
 
 </html>
