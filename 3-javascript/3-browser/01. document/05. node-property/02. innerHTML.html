@@ -1,0 +1,28 @@
+<html>
+
+<body>
+  <p>p 태그</p>
+  <div>div 태그</div>
+
+  <script>
+    // DOM객체.innerHTML
+    // 요소 내부
+    console.log(document.body.innerHTML); // 내용 읽기
+
+    // setTimeout(실행할함수, 시간(ms));
+    // setTimeout(() => {
+    //   document.body.innerHTML = '새로운 BODY!'; // 교체
+    // }, 2000);
+
+    // 근데 이렇게하면 script 태그가 사리지기떄문에
+    // 보통 추가를 많이함
+
+    setTimeout(() => {
+      //원래의 body 내부에 html태그를 추가함
+      document.body.innerHTML += '<div>태그임</div>'; // 태그 추가
+    }, 2000);
+  </script>
+
+</body>
+
+</html>

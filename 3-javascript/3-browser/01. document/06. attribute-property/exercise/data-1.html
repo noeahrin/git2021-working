@@ -1,0 +1,34 @@
+<!-- 속성 가져오기
+중요도: 5
+문서에서 data-widget-name이라는 속성을 가진 요소를 찾고, 
+해당 요소의 값을 읽는 코드를 작성해 보세요. -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<body>
+
+  <div data-widget-name="menu">Choose the genre</div>
+
+  <script>
+    /* your code */
+  </script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <div data-widget-name="menu">Choose the genre</div>
+
+  <script>
+    const div = document.querySelector('div');
+    console.log(div);
+    console.log(div.getAttribute('data-widget-name'));
+  </script>
+</body>
+
+</html>
