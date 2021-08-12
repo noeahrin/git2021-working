@@ -1,7 +1,8 @@
 <html>
 
 <body>
-  <div>영역</div>
+  <div>영역1</div>
+  <div>영역2</div>
   <ul id="list">
     <li>1-1</li>
     <li>1-2</li>
@@ -14,14 +15,68 @@
     <li>3-1</li>
     <li>3-2</li>
   </ol>
-  <input type="text">
-  <input type="checkbox">
+  <table>
+    <tbody>
+      <tr>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>2</td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="text"> <!-- 입력박스 -->
+  <input type="checkbox"> <!-- 체크박스-->
   <script>
-    // 상위요소.querySelector("CSS선택자");
-    // document의 하위요소중 id가 'div'인 요소를 선택
+    // 상위요소.querySelector("CSS선택자");     // 첫번쨰만 선택
+    // 상위요소.querySelectorAll("CSS선택자");  // 모두 선택
+
+    // document의 하위 요소중 태그가 'div'인 요소를 선택
+    // document라는 객체에 querySelector이라는 메서드를 사용해서 div라는 태그를 선택
+    // 해당 요소중 첫번째 요소를 선택
     const div = document.querySelector("div");
-    console.log(div);
-    console.log(document.querySelectorAll("div"));
+    console.log(div); // <div>영역1</div>
+
+    // document의 하위 요소중 태그가 'div'인 요소를 모두 선택
+    const divList = document.querySelectorAll("div");
+    console.log(divList); // NodeList(2) {div, div}
+
+    /* ------------- 같은 요소들을 선택함 ------------*/
+    // id가 list인 요소의 li태그 자식들
+    const liList1 = document.querySelectorAll("#list>li");
+    console.log(liList1); // NodeList(2) {li, li}
+
+    // id선택자    id가 list인것 : #list
+    const ul = document.querySelector("#list");
+    console.log(ul);  // <ul id="list">...</ul>
+
+    // 요소(document외에도 올 수 있음).querySelectorAll();
+    const liList2 = ul.querySelectorAll("li");
+    console.log(liList2); // NodeList(2) {li, li}
+    /*-------------------------------*/
+
+    // class선택자     class가 item인것: .item
+    const liList = document.querySelectorAll(".item");
+    console.log(liList);  // NodeList(2) {li.item, li.item}
+
+    // 후손/자손 선택자
+    const olList = document.querySelectorAll("ol>li");
+    console.log(olList);  // NodeList(2) {li, li}
+
+    // pseudo class(의사클래스)
+    const liFirst = document.querySelectorAll("ol>li:first-child");
+    console.log(liFirst); // NodeList {li}
+
+    // // pseudo element(의사요소)  하려면 좀 복잡함 
+    // const before = liFirst.querySelector("::before");
+    // console.log(before);
+
+    // 속성선택자(attribute selector)
+    // 태그[속성명=속성값] -> 해당태그에 해당 속서이 있는 요소를 선택
+    const text = document.querySelector('input[type="text"]');
+    console.log(text);  // <input type="text">
+    const chk = document.querySelector('input[type="checkbox"]');
+    console.log(chk);  // <input type="checkbox">
 
   </script>
 </body>

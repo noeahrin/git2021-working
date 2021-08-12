@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+  <form name="search">
+    <label>Search the site:
+      <input type="text" name="search">
+    </label>
+    <input type="submit" value="Search!">
+  </form>
+
+  <hr>
+
+  <form name="search-person">
+    Search the visitors:
+    <table id="age-table">
+      <tr>
+        <td>Age:</td>
+        <td id="age-list">
+          <label>
+            <input type="radio" name="age" value="young">less than 18</label>
+          <label>
+            <input type="radio" name="age" value="mature">18-50</label>
+          <label>
+            <input type="radio" name="age" value="senior">more than 50</label>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Additionally:</td>
+        <td>
+          <input type="text" name="info[0]">
+          <input type="text" name="info[1]">
+          <input type="text" name="info[2]">
+        </td>
+      </tr>
+
+    </table>
+
+    <input type="submit" value="Search!">
+  </form>
+</body>
+<script>
+  // 요소 검색하기
+  // 중요도: 4
+  // 테이블과 폼이 있는 문서가 있다고 가정합시다.
+
+  // 아래 조건에 맞는 요소는 어떻게 찾을 수 있을까요 ?
+
+  // id = "age-table"인 테이블
+  // 테이블 내의 label 요소 모두(총 3개)
+  // 테이블 내의 첫 번째 td(Age가 적힌 곳)
+  // name = "search"인 form
+  // 폼의 첫 번째 input
+  // 폼의 마지막 input
+
+  // 별도의 창에서 table.html을 열어 브라우저 내 도구를 사용해 문제를 풀어보세요.
+  const idAgeTable = document.querySelector('#age-table');
+  console.log(idAgeTable);
+
+  const liLabel = idAgeTable.querySelectorAll('label');
+  console.log(liLabel);
+
+  const tdFirst = idAgeTable.querySelector('td');
+  console.log(tdFirst);
+
+  const formSearch = document.getElementsByName('search')[0];
+  console.log(formSearch);
+
+  const formFirstInput = document.querySelector('form>label>input');
+  console.log(formFirstInput);
+
+  const formLastInput = document.querySelector('form>input');
+  console.log(formLastInput);
+</script>
+
+</html>

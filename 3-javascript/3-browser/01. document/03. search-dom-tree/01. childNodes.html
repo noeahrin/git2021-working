@@ -1,3 +1,78 @@
+<!-- 0812
+
+vanilla javascript
+pure javascript
+
+-> 기본적인 javascript
+
+라이브러리, 프레임워크 x
+
+DOM : document object model
+BOM : browser object model
+
+                            window
+ DOM                BOM              Javascript
+document       Object                  Array
+                       navigator            Function
+                        screen
+                       location
+                        frames
+                       history
+               XMLHttpRequest
+
+
+
+<script>
+    var str = "Hello";
+    str2 = "Hello";
+      // window.str
+      // window.str2
+</script>
+
+
+
+---HTML---           --Browser--                                                --Javascript--
+<html> |                           --DOM API--: 문서를 개체화한 구조              |
+<body>|                 구현     API: Application Programming Interface  <----   | 
+<h1>    | \              /\                                             /  <---- |
+<p>      | \             |                            호출해서 제어      /  /
+<ul>     |  ------\      |                /_---------------------------   |
+<li>      |       _\| DOM 문서 객체화 구조  /_----------------------------
+                             object: 구조화된 메모리공간
+
+여기서 Interface 는 user interface가 아니라 프로그램 개발을 위한 Interface, 중간다리임
+interface를 통해서 무언가를 제어하기 위함
+
+Application: 응용프로그램   OS
+
+javascript에서 document 라는 객체를 통해서 DOM API 호출해서 HTML의 body 이런식으로 갈수 있음
+
+document.body.style.background = "red";
+
+navigator.userAgent: 브라우저 오브젝트 모델, 호환 가능한 버전 등 이런거 나옴
+예) navigator.userAgent
+"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36"
+
+navigator.platform
+"Win32"
+
+
+
+DOM 트리
+HTML을 지탱하는 것은 태그(tag)입니다.
+
+문서 객체 모델(DOM)에 따르면, 모든 HTML 태그는 객체입니다.
+
+예) 객체를 만든다.(객체화) 
+      let obj = {id: 1, name: 'hong'}
+
+HTML 태그들을 객체화 -> DOM
+document.body는 <body> 태그를 객체로 나타낸 것
+
+트리(tree): 상/하위 계층 구조
+   - 최상단이 root(뿌리), 최상위 부모
+   - 최하단이 leaf(잎) -->
+
 <html>
 
 <body>
