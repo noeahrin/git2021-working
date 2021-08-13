@@ -66,8 +66,9 @@
     // --------------------------------------------------
 
     txtEmail.addEventListener("keyup", (event) => {
-      if (event.keycode == 13) {
-        txtEmail.blur();
+      // 엔터키를 입력했을 때만 화면에 추가하도록 함
+      if (event.keyCode == 13) {
+        txtEmail.blur(); // 입력박스의 포커스를 초기화
         add(event);
       }
     });
