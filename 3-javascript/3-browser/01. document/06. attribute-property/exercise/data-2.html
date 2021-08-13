@@ -37,11 +37,11 @@ href에 ://가 포함되어 있어야 합니다.
   </ul>
 
   <script>
-    // 그냥 a 하면 제일 위에 href가 없는 a 도 포함되서 안됨
-    // 그래서 ul a 이렇게 해야함
-    const allA = document.querySelectorAll('ul a');
-    console.log(allA);
-    for (let link of allA) {
+    // 그냥 a 하면 제일 위에 href가 없는 a의 null에서 includes 속성을 읽을 수 없어
+    // 되지 않음으로 ul 안에만 있는 a만 해야함
+    const links = document.querySelectorAll('ul a'); //// a 안되고 ul a 해야함
+    console.log(links);
+    for (let link of links) {
       const href = link.getAttribute('href');
       console.log(href);
       if (href.includes('://') && !href.includes('http://internal.com')) {

@@ -1,0 +1,26 @@
+<html>
+
+<body>
+  <input type="button" id="hider" value="Click to hide the text">
+  <!-- <button id="hider">Click to hide the text</button> -->
+  <div id="text">Text</div>
+  <script>
+    // Hide on click
+    // 중요도: 5
+    // Add JavaScript to the button to make 
+    // < div id = "text" > disappear when we click it.
+
+
+
+    const hider = document.querySelector("#hider")
+    const text = document.getElementById("text");
+
+    hider.addEventListener("click", click);
+
+    function click() {
+      text.style.display = "none";
+    }
+  </script>
+</body>
+
+</html>
