@@ -37,6 +37,7 @@
     //   alert("안녕하세요.");
     // })
 
+
     // 동적으로 생선된 요소의 이벤트 부착을 어떻게 할 것인가?
     // 1. 이미 태그가 작성되어 있는 최상위 요소를 선택한다. 여기선 container
     const container = document.querySelector("#container");
@@ -49,7 +50,7 @@
       // 2. 해당 요소가 맞는지 확인하는 작업
       // 클릭 이벤트를 발생시킨 요소가 strong 태그이면
       if (event.target.tagName == "STRONG") {
-        this.alert("안녕하세요!");
+        this.alert("안녕하세요! 부모요소에 붙임");
       }
     });
 
@@ -57,7 +58,10 @@
 
     // 1. 추가할 요소 문자열을 생성
     // bcak-quote(`), template-literal(조각UI 표기법)
-    const alert = `
+    // extension: es6-string-html
+    // const alert = /*html*/ 이렇게 하면 문자열 안에 잘보임
+    const alert =
+      `
     <div class="alert">
     <strong>안녕하세요!</strong> 중요 메시지를 확인하셨습니다.
   </div>
@@ -67,13 +71,16 @@
     // const container = document.querySelector("#container");
 
     setTimeout(() => {
-      container.insertAdjacentHTML('afterbegin', alert)
+      // container.insertAdjacentHTML('afterbegin', alert)
       container.insertAdjacentHTML('beforeend', alert)
 
-      // const strong = document.querySelector(".alert>strong");
-      // strong.addEventListener("click", () => {
-      //   this.alert("안녕하세요.");
-      //   })
+      // 동적으로 생성도니 요소의 이벤트 부착을 어떻게 할 것인가?
+      // 1. 만들어진 다음 요소를 선택하고 이벤트 리스너를 추가한다.
+      const strong = document.querySelector(".alert>strong")
+      strong.addEventListener("click", (event) => {
+        this.alert("안녕하세요! 생성된 후 붙임")
+      })
+
 
     }, 2000)
 
