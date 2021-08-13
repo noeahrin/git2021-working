@@ -1,0 +1,60 @@
+<html>
+
+<body>
+  <style>
+    .alert {
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+  </style>
+
+  <div id="container">
+    <div>annother 태그</div>
+
+  </div>
+
+  <script>
+    // 얘는 DOM 객체열에 추가한거고
+
+    // document.createElement(태그)
+    // 1. 해당 태그의 요소를 생성함
+    // 메모리 공간에 DOM 만 만들었고
+    // 실제로 어떤 요소에 추가를 하야함
+    let div = document.createElement('div');
+
+    // 2. 해당 요소의 속성들을 설정함(div class="alert")
+    div.className = "alert";
+
+    // 3. 해당 요소의 내용을 채어넣음
+    let strong = document.createElement('strong');
+    strong.innerHTML = "안녕하세요!"
+    strong.addEventListener("click", () => { alert("안녕하세요") })
+    div.append(strong);
+
+    div.innerHTML += "중요 메세지를 확인하셨습니다.";
+
+    // div.innerHTML = "<strong>안녕하세요!</strong> 중요 메시지를 확인하셨습니다.";
+
+    // 요소.append(요소) -> 가장 뒤쪽에 삽입
+    // 4. 어떤 요소에 만든 요소를 삽입함  만든 얘를 위에 div id="container"에 넣음
+    const container = document.querySelector("#container");
+
+    setTimeout(() => {
+      // append는 요소 안에 가장 뒤쪽, 즉 가장 마지막 자식으로 붙음
+      container.append(div);
+      // prepend는 요소 안에 가장 앞쪽, 즉 가장 처음 자식으로 붙음
+      container.prepend(div);
+      // 요소 밖 이전의 형제요소로 추가됨
+      container.before(div);
+      // 요소 밖 다음의 형제요소로 추가됨
+      container.after(div);
+    }, 2000)
+
+
+  </script>
+</body>
+
+</html>
