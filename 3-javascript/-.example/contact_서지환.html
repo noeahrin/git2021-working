@@ -79,32 +79,42 @@
     // txt input에서 엔터시 이벤트 실행 함수
     function keyup() {
       if (event.keyCode == 13) {
-        // focus를 줌으로써 입력후 엔터를 누르면 첫번째 입력박스인 txtName에 커서가 오도록 만듬
-        txtName.focus();
-        // 입력박스의 focus를 초기화
-        txtPhone.blur();
-        txtEmail.blur();
+        // 빈 공간에 focus를 줌
+        // 기본적으로 첫번째 txtName에 focus
+        if (!txtName.value) {
+          txtName.focus();
+        } else if (!txtPhone.value) {
+          txtPhone.focus();
+
+        } else if (!txtEmail.value) {
+          txtEmail.focus();
+        } else {
+          txtName.focus();
+        }
         add(event);
       }
     }
     // add 이벤트 함수
     function add(event) {
-      // console.log(event);
 
       // 빈 공간 있으면 div 에러메세지 처리
       if (!txtName.value || !txtPhone.value || !txtEmail.value) {
         const alertDiv = /*html*/
           `
         <div class="alert alert-warning alert-dismissible" role="alert" id="liveAlert">
-          빈 공간이 있으면 안됩니다.
+          빈 공간이 있으면 안 됩니다.
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           `;
+
         const delDiv = document.querySelector('#liveAlert')
         formInput.insertAdjacentHTML("afterend", alertDiv);
 
+        // 에러메세지 1개 초과하면 초과되는부분 2초동안 보여줌
+        if (delDiv != null) {
+          setTimeout(() => delDiv.remove(), 2000)
+        }
         return;
-        // setTimeout(() => delDiv.remove(), 1000)
       }
 
       // 생성할 테이블과 remove 임의 클래스
@@ -140,8 +150,22 @@
         if (tbody.rows.length == 0) {
           tfoot.hidden = false;
         }
+
+        // remove클릭시 숫자 재변경
+        for (let elem of tbody.querySelectorAll('tr')) {
+          elem.firstChild.nextSibling.textContent = tbody.rows.length - elem.rowIndex + 1;
+        }
       }
     }
+
+    // const arr = [];
+
+      // console.log(tbodyTh);
+      // console.log();
+      // 삭제하면 숫자도 행 길이에 맞게 변경
+      // num.textContent = tbody.rows.length;
+      // console.log(num.textContent);
+
   </script>
 </body>
 

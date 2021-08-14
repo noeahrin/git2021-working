@@ -77,16 +77,24 @@
     // tbody에 이벤트 추가, remove 이벤트 함수는 밑에
     tbody.addEventListener("click", remove);
 
-
+    // tbody에 이벤트 추가, eraser 이벤트 함수는 밑에
+    tbody.addEventListener("click", eraser);
 
     // txt input에서 엔터시 이벤트 실행 함수
     function keyup() {
       if (event.keyCode == 13) {
-        // focus를 줌으로써 입력후 엔터를 누르면 첫번째 입력박스인 txtName에 커서가 오도록 만듬
-        txtName.focus();
-        // 입력박스의 focus를 초기화
-        txtPhone.blur();
-        txtEmail.blur();
+        // 빈 공간에 focus를 줌
+        // 기본적으로 첫번째 txtName에 focus
+        if (!txtName.value) {
+          txtName.focus();
+        } else if (!txtPhone.value) {
+          txtPhone.focus();
+
+        } else if (!txtEmail.value) {
+          txtEmail.focus();
+        } else {
+          txtName.focus();
+        }
         add(event);
       }
     }
@@ -106,11 +114,15 @@
         const delDiv = document.querySelector('#liveAlert')
         formInput.insertAdjacentHTML("afterend", alertDiv);
 
+        // 에러메세지 1개 초과하면 초과되는부분 2초동안 보여줌
+        if (delDiv != null) {
+          console.log(delDiv);
+          setTimeout(() => delDiv.remove(), 2000)
+        }
         return;
-        // setTimeout(() => delDiv.remove(), 1000)
       }
 
-      // 생성할 테이블과 remove 임의 클래스
+      // 생성할 테이블과 eraser, done, remove 임의 클래스
       const tbodyContents = /*html*/`
         <tr>
         <th scope="row">${tbody.rows.length + 1}</th>
@@ -135,17 +147,6 @@
 
       // 입력되면 수정버튼 hidden 활성화
       doneTable.parentElement.hidden = true;
-
-      // // tbody에 이벤트 추가, eraser 이벤트 함수는 밑에
-      // tbody.addEventListener("click", eraser);
-      // // eraser 이벤트 함수
-      // function eraser(event) {
-      //   if (event.target.className.includes("eraser")) {
-      //     const btnEraser = event.target;
-      //     doneTable.parentElement.hidden = false;
-      //     return;
-      //   }
-      // }
     }
 
     // remove 이벤트 함수
@@ -163,6 +164,14 @@
       }
     }
 
+    // eraser 이벤트 함수
+    function eraser(event) {
+      if (event.target.className.includes("eraser")) {
+        const btnEraser = event.target;
+        let doneTable = document.querySelector("#done-table");
+        doneTable.parentElement.hidden = false;
+      }
+    }
 
 
   </script>

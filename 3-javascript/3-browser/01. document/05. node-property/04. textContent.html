@@ -5,6 +5,10 @@
     <h1>주요 뉴스!</h1>
     <p>화성인이 지구를 침공하였습니다!</p>
   </div>
+  <span>1</span>
+  <span>2</span>
+  <span>3</span>
+  <span>4</span>
 
   <script>
     const news = document.querySelector('#news');
@@ -14,7 +18,13 @@
 
     // 텍스트 내용만
     console.log(news.textContent);  // 주요 뉴스!
-                                   // 화성인이 지구를 침공하였습니다!
+    // 화성인이 지구를 침공하였습니다!
+
+    console.log(document.querySelectorAll('span'));
+    for (elem of document.querySelectorAll('span')) {
+      console.log(elem.innerHTML);
+    }
+    console.log(document.querySelectorAll('span').innerHTML);
   </script>
 </body>
 
