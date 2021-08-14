@@ -64,19 +64,11 @@
     const tfootTr = tfoot.querySelector('tr');
 
     // --------------------------------------------------
-    // txtEmail에서 키보드 엔터시 이벤트 실행
-    // txtEmail.addEventListener("keyup", (event) => {
-    //   // 엔터키 코드가 13
-    //   if (event.keyCode == 13) {
-    //     txtEmail.blur(); // 입력박스의 focus를 초기화
-    //     add(event);
-    //   }
-    // });
 
+    // txt input에 이벤트 추가, keyup 이벤트 함수는 밑에
     txtName.addEventListener("keyup", keyup);
     txtPhone.addEventListener("keyup", keyup);
     txtEmail.addEventListener("keyup", keyup);
-
 
     // 추가버튼에 이벤트 추가, add 이벤트 함수는 밑에
     btnAdd.addEventListener("click", add);
@@ -87,8 +79,9 @@
     // txt input에서 엔터시 이벤트 실행 함수
     function keyup() {
       if (event.keyCode == 13) {
+        // focus를 줌으로써 입력후 엔터를 누르면 첫번째 입력박스인 txtName에 커서가 오도록 만듬
+        txtName.focus();
         // 입력박스의 focus를 초기화
-        txtName.blur();
         txtPhone.blur();
         txtEmail.blur();
         add(event);
