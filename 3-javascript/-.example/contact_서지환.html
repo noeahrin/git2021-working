@@ -64,14 +64,19 @@
     const tfootTr = tfoot.querySelector('tr');
 
     // --------------------------------------------------
+    // txtEmail에서 키보드 엔터시 이벤트 실행
+    // txtEmail.addEventListener("keyup", (event) => {
+    //   // 엔터키 코드가 13
+    //   if (event.keyCode == 13) {
+    //     txtEmail.blur(); // 입력박스의 focus를 초기화
+    //     add(event);
+    //   }
+    // });
 
-    txtEmail.addEventListener("keyup", (event) => {
-      // 엔터키를 입력했을 때만 화면에 추가하도록 함
-      if (event.keyCode == 13) {
-        txtEmail.blur(); // 입력박스의 포커스를 초기화
-        add(event);
-      }
-    });
+    txtName.addEventListener("keyup", keyup);
+    txtPhone.addEventListener("keyup", keyup);
+    txtEmail.addEventListener("keyup", keyup);
+
 
     // 추가버튼에 이벤트 추가, add 이벤트 함수는 밑에
     btnAdd.addEventListener("click", add);
@@ -79,6 +84,16 @@
     // tbody에 이벤트 추가, remove 이벤트 함수는 밑에
     tbody.addEventListener("click", remove);
 
+    // txt input에서 엔터시 이벤트 실행 함수
+    function keyup() {
+      if (event.keyCode == 13) {
+        // 입력박스의 focus를 초기화
+        txtName.blur();
+        txtPhone.blur();
+        txtEmail.blur();
+        add(event);
+      }
+    }
     // add 이벤트 함수
     function add(event) {
       // console.log(event);
