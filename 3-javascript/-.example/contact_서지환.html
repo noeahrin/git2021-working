@@ -146,7 +146,7 @@
         const tbodyTr = btnRemove.parentNode.parentNode;
         tbodyTr.remove();
 
-        // tbody rows가 0이면 tfoot 비활성화
+        // tbody rows가 0이면 tfoot hidden 비활성화
         if (tbody.rows.length == 0) {
           tfoot.hidden = false;
         }
