@@ -33,9 +33,31 @@
       localStorage.removeItem('txt');
       txtArea.value = '';
     }
+    // 다시 가져와서 새로고침해도 안바뀜
+    txtArea.value = localStorage.getItem('txt');
 
 
+  </script>
+  <script>
+    // const txt = document.querySelector('texttarea');
+    // const btn = document.querySelector('button');
+    // const storageKey = "memo";
 
+    // // txtarea 입력할 때마다 이벤트 처리
+    // txt.addEventListener('keyup', () => {
+    //   // console.log(txt.value);
+    //   // 로컬스토리지에 저장
+    //   localStorage.setItem(storageKey, txt.value);
+    // })
+
+    // btn.addEventListener('click', () => {
+    //   txt.value = '';
+    //   localStorage.removeItem(storageKey);
+    // })
+
+    // // 스크립트 실핼될 때 스토리지 값 가져오기
+    // // 페이지 로딩이 됐을 때(스크립트가 가장 하단에 있다는 저넺 하에)
+    // txt.value = localStorage.getItem(storageKey);
   </script>
 </body>
 
