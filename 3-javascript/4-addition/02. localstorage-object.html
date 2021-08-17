@@ -1,0 +1,52 @@
+<html>
+
+<body>
+  <script>
+    // 객체에다 함수같은걸 집어넣으면 로컬스토리지에 잘 안나옴
+    // 예) const obj = { id: 1, name: "John", fn: () };
+    // 즉 속성에 함수가 있다면 함수가 제거됨  데이터만 사용 가능
+
+    const obj = { id: 1, name: "John" };
+    const arr = [
+      { id: 1, name: "John" },
+      { id: 2, name: "Lee" },
+      { id: 3, name: "Kim" },
+    ]
+
+    // 객체/배열 => 문자열
+    // JSON.stringify(객체/배열)
+    // JSON: Javascript Object Notation, 자바스크립트 객체구조 표현법(문자열)
+    // 문자열인데 내부적으로 객체구조가 자바스크립트 구조로 되어있다 라는 뜻
+    const objStr = JSON.stringify(obj);
+    const arrStr = JSON.stringify(arr);
+
+    console.log(objStr);
+    console.log(typeof objStr); // String
+    console.log(arrStr);
+    console.log(typeof arrStr); // String
+
+    // 문자열 -> 객체/배열
+    const objStrCvt = JSON.parse(objStr);
+    const arrStrCvt = JSON.parse(arrStr);
+
+    console.log(arrStrCvt);
+    console.log(typeof arrStrCvt);  // Object
+    console.log(objStrCvt);
+    console.log(typeof objStrCvt);  // Object
+    setTimeout(() => {
+      // 로컬스토리지는 문자열로만 저장 가능
+      // 객체/배열을 -> 문자열
+      localStorage.setItem("obj", JSON.stringify(obj));
+      localStorage.setItem("arr", JSON.stringify(arr));
+
+      // 꺼내서 쓸때는 문자열 -> 객체
+      const storedObj = JSON.parse(localStorage.getItem("obj"));
+      const storedArr = JSON.parse(localStorage.getItem("arr"));
+      console.log(storedObj);
+      console.log(storedArr);
+    }, 3000)
+
+  </script>
+</body>
+
+</html>

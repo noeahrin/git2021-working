@@ -1,0 +1,42 @@
+<html>
+
+<body>
+  <textarea id="txt-area" placeholder="Write here"></textarea>
+  <div></div>
+  <button id="btn-clear" type="button">Clear</button>
+  <script>
+    // 양식 필드를 자동으로 저장하기
+    // 변화가 생길 때마다 값을 '자동으로 저장’하는 textarea 필드를 만들어보세요.
+
+    // 사용자가 실수로 페이지를 닫은 경우, 다시 열었을 때 미처 
+    // 마무리하지 못했던 입력을 이어서 할 수 있도록 해줍시다.
+
+    // 힌트: 
+    // 이벤트 1.keyup 될떄마다 로컬스토리지에 저장
+    //  2. 페이지가 로딩됐을 때 로컬스토리지에 저장된걸 꺼내서 txtarea에 값을 넣음
+    //  <txtarea></textarea>
+    // clear버튼: 해당 key의 로컬스토리지를 삭제 localStorage.removeItem(key) 써서
+
+    const txtArea = document.querySelector('#txt-area');
+    const btnClear = document.querySelector('#btn-clear');
+    txtArea.addEventListener('keyup', keyup);
+    btnClear.addEventListener('click', click);
+    // console.log(txtArea.value);
+
+
+    function keyup(event) {
+      localStorage.setItem("txt", txtArea.value)
+      const txtGet = localStorage.getItem('txt');
+      // console.log(txtGet);
+    }
+    function click(event) {
+      localStorage.removeItem('txt');
+      txtArea.value = '';
+    }
+
+
+
+  </script>
+</body>
+
+</html>
