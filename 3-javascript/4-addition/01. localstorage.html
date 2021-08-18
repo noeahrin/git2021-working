@@ -19,3 +19,65 @@
 </body>
 
 </html>
+<!-- 처리하는 과정에서 어느곳에 저장해야하는 방법
+2가지
+
+1. disk영역에 저장
+
+현재 client에서 처리
+||   brower        ||
+||                    ||
+||                    ||
+||   disk영역      ||
+
+2. client에서 server에 저장해서 서버에서 다시 DB로 저장
+
+
+
+localstorage는 쿠키 삭제 하지 않는 이상 남아있음
+
+저장되는 공간이
+프로토콜/도메인(ip주소)/포트번호        도메인은 중요함, 돈주고 사야함 즉 그사람꺼, 웹사이트 운영자꺼
+
+
+
+1. add 할 때 localStorage 데이터를 추가
+  - localStorage에서 기존데이터 가져온 후 추가
+  - setItem
+  - id는 가장 마지막에 추가한 데이터의 ⁯id+1
+  - tr 태그에 id를 데이터 속성으로
+  
+2. remove 할 때 localStorage에서 특정 데이터를 삭제
+  - localStorage에서 가져온 후  특정id의 요소만 삭제
+  - setItem
+  - filter 함수를 잘 쓰면 됨
+     -> item.id != tr.dataset.id
+3. 페이지 로딩할 때 localStorage에서 데이터 가져오기
+  - localSttorage에서 가져온 후 배열을 tr 목록으로
+  - getItem
+  - map, join
+
+. contact = [];  // 컨텍트는 배열구조의 데이터를 setItem, getItem 해야됨
+. 배열번호나 id값 같은 것들이 있어야함 
+	-> data-속성, <tr data-id="1" ... 이런게 있으면 작업이 편할듯
+	-> tr.dataset.id
+
+<div id="box" data-about="Elephants">
+    코끼리는 뿌우~~~~~~
+  </div>
+// DOM: dataset.about -> Element: data-about
+    console.log(div.dataset.about); // Elephants
+
+
+map 함수 쓰면 쉽게 됨
+ 배열의 map 과 join 쓰면 쉽게 됨
+
+
+
+
+
+로컬스토리지를 객체구조로 제어를 하려면
+이런 흐름이 있어야 함
+1. 로컬스토리지에서 데이터를 가져오기(getItem -> JSON.prase)
+2. 데이터를 조작(배열은 배열에 맞게, 객체는 객체에 맞게)
+3. 로컬스토리지에 변경도니 데이터를 저장(JSON.stringfy -> setItem) -->
