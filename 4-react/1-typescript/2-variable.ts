@@ -8,3 +8,11 @@ str = "John";
 
 num = 1;
 // num = "John"; // type error
+
+let a = 5;
+let b = 10;
+let c = "*";
+let d: number;
+
+d = a + Number(c) + b;
+console.log(d);
