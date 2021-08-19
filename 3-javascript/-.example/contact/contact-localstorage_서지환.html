@@ -116,6 +116,12 @@
         }
         return;
       }
+      // 정보를 다 입력하면 에러메세지 전부 지움
+      if (txtName.value && txtPhone.value && txtEmail.value) {
+        document.querySelectorAll('.alert').forEach(element => {
+          element.remove();
+        });
+      }
 
       // 생성할 테이블과 remove 임의 클래스
       const tbodyContents = /*html*/`

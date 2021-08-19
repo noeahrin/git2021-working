@@ -37,6 +37,7 @@
 
   btnInput.addEventListener("click", input)
 
+
   function input() {
     if (!fileInput.files[0] && textPost.value != "") {
       const alertDiv1 =  /*html*/ `
@@ -67,17 +68,47 @@
       alertAll.forEach(element => {
         element.remove()
       });
-    
+
       const reader = new FileReader();
-    
-    
-    
+
+      reader.readAsDataURL(fileInput.files[0]);
+
+      reader.onload = () => {
+        const dataUrl = reader.result;
+
+        let media = "";
+
+        if (fileInput.files[0].type.includes("image")) {
+          media = /*html*/`<img src=${dataUrl} class="card-img-top">`;
+        } else {
+          media = /*html*/`<video src=${dataUrl} class="card-img-top" controls></video>`;
+        }
+        const card = `
+          <div class="card mt-1">
+            ${media}
+            <div class="card-body">
+              <p class="card-text">${textPost.value}</p>
+              <a href="#" class="link-secondary fs-6 float-end remove">REMOVE</a>
+            </div>
+          </div>      
+          `
+
+        divList.insertAdjacentHTML("afterbegin", card);
+
+        // 입력 폼 초기화
+        formInput.reset();
+      }
+
     }
 
   }
-  function remove() {
+  divList.addEventListener("click", (event) => {
+    if (event.target.className.includes("remove")) {
+      const card = event.target.closest(".card")
+      card.remove();
+    }
+  })
 
-  }
 </script>
 
 </html>
