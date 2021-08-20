@@ -1,5 +1,7 @@
 // 계좌관리
 
+import { useState } from "react";
+
 ////// 입력박스에는 입출금 금액 넣음   prompt로 떠야함
 
 // 버튼: 입금버튼, 출금버튼
@@ -17,79 +19,91 @@
 // 입금: _____ (초록)
 // 출금: _____ (빨강)
 
-
-import { useState } from "react";
-const ListItem = ({ key, name, num }: { key: number; name: string; num: number }) => {
-  const color = num < 0 ? "red" : "green";
-  return (
-    <li key={key} style={{ color: color }}>
-      {name}{num}
-    </li>
-  )
-}
+const ListItem = ({ money }: { money: number }) => {
+  return <li style={{ color: money < 0 ? "red" : "green" }}>
+    {money < 0 ? "출금" : "입금"}
+    {money}</li>;
+};
 
 const AccountManager = () => {
-  const [numbers, setResult] = useState<number[]>([0]);
 
-  const Input = () => {
-    const inputMoney = prompt("금액을 입력하세요", "");
-    const num = Number(inputMoney);
-    const sum = [num, ...numbers].reduce((a, b) => (a + b))
-    setResult([num, ...numbers]);
-    console.log(sum);
-    console.log(numbers);
-    console.log(numbers.reduce((a, b) => (a + b)));
-  }
+  // useState 함수는 useState<state타입>(초깃값);
+  // [state변수, state변경함수]를 반환한다
 
-  const Output = () => {
-    const inputMoney = prompt("금액을 입력하세요", "");
-    const num = -Number(inputMoney);
-    const sum = [num, ...numbers].reduce((a, b) => (a + b));
-    setResult([num, ...numbers]);
-    console.log(sum);
-    console.log(numbers);
-    console.log(numbers.reduce((a, b) => (a + b)));
-  }
+  // 입출금 이력을 표시하는 state
+  const [logs, settLogs] = useState<number[]>([]);
 
+  // 입/출금 처리하는 함수
+  // transact: 거래하다, trasction: 거래
+  const transact = (mod: "deposit" | "withdraw") => {
+    const msg = mod === "deposit" ? "입금 금액" : "출금 금액";
+    const input = prompt(`${msg}을 입력해주세요.`);
+
+    // 입금이면 양수, 출금이면 음수로 처리
+    let money = 0;
+    if (input) {
+      money = mod === "deposit" ? +input : -input;
+    }
+
+    if (mod === "deposit") {
+      // 입/출금 이력 state에 추가
+      settLogs([money, ...logs]);
+    } else {
+      // 출금일 때
+      /// 출금이 가능하면
+      if (check(logs, money)) {
+        // 입출금 이력 state에 입력값을 추가
+        settLogs([money, ...logs]);
+      } else {
+        alert("잔액이 부족합니다.");
+      }
+    }
+  };
+
+  // 출금할 수 있는지 확인하는 함수(잔액확인함수)
+  // 현재 입/출금기록, 출금금액을 매개변수로 받음
+  const check = (logs: number[], money: number) => {
+    let sum = 0;
+    // 입출금 이력이 있으면 잔액을 합산 처리
+    if (logs.length > 0) {
+      // 입출금 이력으로 잔액 합산
+      sum = logs.reduce((acc, log) => (acc + log));
+    }
+
+    // 잔액 +(-출금액) >=0 : true;
+    // 잔액 +(-출금액) <0 : false;
+    return sum + money >= 0;
+  };
 
   return (
     <div>
       <h2>AccountManager</h2>
-      <div>
-        <button onClick={() => {
-          Input();
-        }}
-        >
-          입금
-        </button>
-        <button onClick={() => {
-          Output();
-        }}
-        >
-          출금
-        </button>
-        {
-          <span>
-            잔액:{numbers.reduce((a, b) => (a + b))}
-          </span>
-        }
-      </div>
+      <button onClick={() => {
+        transact("deposit");
+      }}
+      >
+        입금
+      </button>
+      <button onClick={() => {
+        transact("withdraw");
+      }}
+      >
+        출금
+      </button>
+      {
+        // 입출금 이력이 있을 때만
+        logs.length > 0 && <span>잔액: {logs.reduce((acc, log) => (acc + log))}</span>
+      }
       <ul>
         {
-          numbers.map(
-            (num, index) => (
-              // 세부 컴포넌트로 분리하여 처리
-              num < 0 ? (
-                <ListItem key={index} name={`출금: `} num={num} />
-              ) : (
-                <ListItem key={index} name={`입금: `} num={num} />
-              )
-            )
-          )
-        }
+          // 입출금 이력을 표시하는 문
+          logs.map((money, index) => (
+            // 반복적으로 표시되는 요소/컴포넌트에는 key 속성이 필수
+            // 렌더링 속도에 영향을 미침
+            <ListItem key={index} money={money} />
+          ))}
       </ul>
     </div>
-
   )
-};
+}
 export default AccountManager;
