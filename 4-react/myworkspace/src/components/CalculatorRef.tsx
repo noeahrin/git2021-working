@@ -17,46 +17,47 @@ import { useRef, useState } from "react";
 //     결과값: 50
 //     <div>50</div>
 
-const CalculatorRef = () => {
-  const [result, setResult] = useState<string | number>();
+const Calculator = () => {
+  const [result, setResult] = useState(0);
+  const inputARef = useRef<HTMLInputElement>(null);
+  const inputBRef = useRef<HTMLInputElement>(null);
+  const inputOpRef = useRef<HTMLInputElement>(null);
 
-  const inputRef1 = useRef<HTMLInputElement>(null);
-  const inputRef2 = useRef<HTMLInputElement>(null);
-  const inputRef3 = useRef<HTMLInputElement>(null);
   const calculate = () => {
-    const First = inputRef1.current?.value;
-    const operator = inputRef2.current?.value;
-    const Second = inputRef3.current?.value;
-    // 값 비우기
-    inputRef1.current && (inputRef1.current.value = "");
-    inputRef2.current && (inputRef2.current.value = "");
-    inputRef3.current && (inputRef3.current.value = "");
-    const numFirst = Number(First);
-    const numSecond = Number(Second);
-    setResult(eval(`${numFirst}${operator}${numSecond}`));
+    const a = inputARef.current?.value;
+    const b = inputBRef.current?.value;
+    const op = inputOpRef.current?.value;
+
+    console.log(`${a}${op}${b}`);
+
+    // eval(문자열)
+    // 문자열이 자바스크립트코드로 실행할 수 있으면 실행
+    // const code = `alert(${a}${op}${b})`;
+    // eval(code);
+    // eslint-disable-next-line
+    setResult(eval(`${a}${op}${b}`));
+
+    // state 값에 변동이 없으면 컴포넌트를 업데이트하지 않음
+    // 기존 result == 20
+    // 변동 result == 20, 컴포넌트를 업데이트하지 않음
   };
 
   return (
     <div>
-      <h2>CalculatorRef</h2>
-      {/* 입력박스 3개, 첫번째숫자/두번째숫자/연산자 */}
-      <div>
-        <input type="text" ref={inputRef1} />
-        <input type="text" ref={inputRef2} />
-        <input type="text" ref={inputRef3} />
-      </div>
-      <div>
-        <button
-          onClick={() => {
-            calculate();
-          }}
-        >
-          CALCULATE
-        </button>
-      </div>
+      <h2>Calculator</h2>
+      <input ref={inputARef} placeholder="첫번째 숫자" />
+      <input ref={inputBRef} placeholder="두번째 숫자" />
+      <input ref={inputOpRef} placeholder="연산자(+, -, *, /)" />
+      <button
+        onClick={() => {
+          calculate();
+        }}
+      >
+        CALCULATE
+      </button>
       <div>{result}</div>
     </div>
   );
 };
 
-export default CalculatorRef;
+export default Calculator;

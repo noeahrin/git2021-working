@@ -20,24 +20,23 @@ const ListItem = ({ money }: { money: number }) => {
   );
 };
 
-const AccountManagerRef = () => {
-  const inputRef = useRef<HTMLInputElement>(null);
+const AccountManager = () => {
   // useState<state타입>(초깃값);
   // [state변수, state변경함수]  반환
 
   // 입출금 이력을 표시하는 state
   const [logs, setLogs] = useState<number[]>([]);
 
+  const inputRef = useRef<HTMLInputElement>(null);
+
   // 입/출금 처리하는 함수
   // transact: 거래하다, trasction: 거래
-
   const transact = (mod: "deposit" | "withdraw") => {
-    const msg = mod === "deposit" ? "입금 금액" : "출금 금액";
-    const input = inputRef.current?.value;
     // 입금이면 양수, 출금이면 음수
     let money = 0;
-    if (input) {
-      money = mod === "deposit" ? +input : -input;
+    if (inputRef.current) {
+      const value = inputRef.current.value;
+      money = mod === "deposit" ? +value : -value;
     }
 
     if (mod === "deposit") {
@@ -53,6 +52,8 @@ const AccountManagerRef = () => {
         alert("잔액이 부족합니다.");
       }
     }
+
+    // 값 비우기
     inputRef.current && (inputRef.current.value = "");
   };
 
@@ -69,36 +70,33 @@ const AccountManagerRef = () => {
     // 잔액 + (-출금액) >= 0 : true
     // 잔액 + (-출금액) < 0 : false
     return sum + money >= 0;
-
   };
 
   return (
     <div>
-      <h2>AccountManagerRef</h2>
+      <h2>Account Manager</h2>
       {/* 입력박스 1개, 금액 */}
-      <input type="text" ref={inputRef} />
-      {
-        // 입출금 이력이 있을 때만
-        logs.length > 0 && (
-          <span>잔액: {logs.reduce((acc, log) => acc + log)} </span>
-        )
-      }
-      <div><button
+      <input type="text" ref={inputRef} placeholder="금액을 입력해주세요" />
+      <button
         onClick={() => {
           transact("deposit");
         }}
       >
         입금
       </button>
-        <button
-          onClick={() => {
-            transact("withdraw");
-          }}
-        >
-          출금
-        </button>
-      </div>
-
+      <button
+        onClick={() => {
+          transact("withdraw");
+        }}
+      >
+        출금
+      </button>
+      {
+        // 입출금 이력이 있을 때만
+        logs.length > 0 && (
+          <span>잔액: {logs.reduce((acc, log) => acc + log)} </span>
+        )
+      }
       <ul>
         {
           // 입출금 이력을 표시하는 문
@@ -113,4 +111,4 @@ const AccountManagerRef = () => {
   );
 };
 
-export default AccountManagerRef;
+export default AccountManager;
