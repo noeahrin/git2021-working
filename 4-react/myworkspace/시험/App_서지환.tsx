@@ -7,8 +7,7 @@ import "./App.scss";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Suspense, lazy } from "react";
 
-import Home from "./components/Home";
-
+// import Home from "./components/Home";
 
 // SPA(Single Page Application)
 // : 페이지 파일이 1개, index.html
@@ -18,8 +17,8 @@ import Home from "./components/Home";
 
 // Lazy-Loading 처리
 // 컴포넌트를 방문하는 시점에 로딩함
-const Todo = lazy(() => import("./components/todo/Todo"));
-const Feed = lazy(() => import("./components/feed/Feed"));
+// const Todo = lazy(() => import("./components/Todo"));
+const Feed = lazy(() => import("./components/Feed"));
 
 
 // React == 컴포넌트 개발 라이브러리
@@ -33,12 +32,12 @@ function App() {
           className="position-fixed"
         >
           <ul>
-            <li>
+            {/* <li>
               <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/todo">Todo</Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/feeds">Feeds</Link>
             </li>
@@ -53,8 +52,8 @@ function App() {
               {/* Switch 영역에 컴포넌트가 로딩됨 */}
 
               {/* 해당 경로에 대해서 로딩할 컴포넌트 목록을 작성 */}
-              <Route path="/" component={Home} exact />
-              <Route path="/todo" component={Todo} />
+              {/* <Route path="/" component={Home} exact /> */}
+              {/* <Route path="/todo" component={Todo} /> */}
               <Route path="/feeds" component={Feed} />
             </Switch>
           </Suspense>
