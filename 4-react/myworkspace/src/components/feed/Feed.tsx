@@ -104,7 +104,9 @@ const Feed = () => {
           item.content = editItem.content;
           item.dataUrl = editItem.dataUrl;
           item.fileType = editItem.fileType;
+          item.createTime = editItem.createTime;
         }
+
       })
     );
     // 모달창 닫기

@@ -30,7 +30,7 @@ const FeedEditModal = ({ item, onClose, onSave }: ModalProp) => {
       dataUrl = undefined;
       fileType = undefined;
     }
-  }
+  };
 
   const save = () => {
     const feed: FeedState = {
