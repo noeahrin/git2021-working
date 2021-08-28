@@ -135,19 +135,7 @@ const TodoInlineEdit = () => {
     // ul 밑에 있는 입력박스중에서 index번째 입력박스만 선택
     const input = ulRef.current?.querySelectorAll("input")[index];
 
-    // immer 없이 map함수로 새로운 배열을 반환 후 변경
-    // setTodoList(
-    //   todoList.map((item) => {
-    //     // 해당 id의 item의 값을 변경
-    //     if (item.id === id) {
-    //       item.memo = input?.value;
-    //       item.modifyTime = new Date().getTime();
-    //       item.isEdit = false;
-    //     }
 
-    //     return item;
-    //   })
-    // );
 
     // immer를 사용하여 해당 요소를 직접변경
     setTodoList(
