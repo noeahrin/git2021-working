@@ -1,0 +1,18 @@
+@import "../../styles/app-variables.scss";
+
+$thumb-size: 24px;
+
+.thumb {
+  width: $thumb-size;
+  height: $thumb-size;
+  // calc((50 - 24) / 2) = 13;
+  margin-top: calc((#{$app-bar-height} - #{$thumb-size}) / 2);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  }
+
+  .username {
+    line-height: $app-bar-height;
+  }

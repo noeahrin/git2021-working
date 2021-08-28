@@ -116,7 +116,7 @@ const Feed = () => {
 
 
   return (
-    <>
+    <div style={{ width: "40vw" }} className="mx-auto">
       {/* immer */}
       <h2 className="text-center my-5">Feeds</h2>
       {isEdit && (
@@ -167,7 +167,7 @@ const Feed = () => {
             <div className="media">
               {
                 item.fileType === "video/mp4"
-                  ? <video src={item.dataUrl} controls />
+                  ? <video src={item.dataUrl} style={{ width: "100%" }} controls />
                   : item.fileType === "image/jpeg" || item.fileType === "image/png"
                     ? <img src={item.dataUrl} alt="feed" style={{ width: "100%" }} />
                     : <img src={item.dataUrl} alt="feed" style={{ display: "none" }} />
@@ -210,7 +210,7 @@ const Feed = () => {
       </div>
 
 
-    </>
+    </div>
   );
 };
 

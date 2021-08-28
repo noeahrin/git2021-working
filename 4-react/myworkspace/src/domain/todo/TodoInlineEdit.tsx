@@ -163,7 +163,7 @@ const TodoInlineEdit = () => {
   };
 
   return (
-    <>
+    <div>
       <h2 className="text-center my-5">할 일 관리</h2>
       <form
         className="d-flex"
@@ -272,7 +272,7 @@ const TodoInlineEdit = () => {
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 };
 

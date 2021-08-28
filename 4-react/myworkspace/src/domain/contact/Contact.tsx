@@ -18,7 +18,7 @@ interface ContactState {
 const Contact = () => {
   const [contactList, setContactList] = useState<ContactState[]>([
     { id: 2, name: "Jhon", phone: "010-1234-5678", email: "John@gmail.com" },
-    { id: 1, name: "Smith", phone: "010-1111-2222", email: "John@gmail.com" },
+    { id: 1, name: "Smith", phone: "010-1111-2222", email: "Smith@gmail.com" },
   ]);
 
   const nameInputRef = useRef<HTMLInputElement>(null);
@@ -26,6 +26,14 @@ const Contact = () => {
   const emailInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const tableRef = useRef<HTMLTableElement>(null);
+  const nameEditRef = useRef<HTMLInputElement>(null);
+  const phoneEditRef = useRef<HTMLInputElement>(null);
+  const emailEditRef = useRef<HTMLInputElement>(null);
+
+
+  const tbodyTr = tableRef.current?.querySelectorAll("tr");
+  const tbodyTrNum = tbodyTr?.length;
+
 
 
   const add = () => {
@@ -36,7 +44,7 @@ const Contact = () => {
         phone: phoneInputRef.current?.value,
         email: emailInputRef.current?.value,
       };
-      console.log(contact);
+
       setContactList(
         produce((state) => {
           state.unshift(contact);
@@ -53,6 +61,13 @@ const Contact = () => {
       })
     );
 
+
+    const tbodyTr = tableRef.current?.querySelectorAll("tr");
+    console.log(id);
+    console.log(tbodyTr?.length);
+    console.log(contactList.length);
+
+    id = contactList.length;
   };
 
   const edit = (id: number, mod: boolean) => {
@@ -62,9 +77,7 @@ const Contact = () => {
         const item = state.find((item) => item.id === id);
         if (item) {
           item.isEdit = mod;
-          console.log(id);
-          let rowCount = ('.tbody');
-          console.log(rowCount);
+
         }
       })
     );
@@ -72,21 +85,20 @@ const Contact = () => {
 
   const save = (id: number, index: number) => {
 
-    const inputName = tableRef.current?.querySelectorAll("input")[index];
-    const inputPhone = tableRef.current?.querySelectorAll("input")[index];
-    const inputEmail = tableRef.current?.querySelectorAll("input")[index];
-    console.log(inputName);
-    console.log(inputName?.parentNode?.nextSibling?.lastChild);
-    console.log(inputName?.parentNode?.nextSibling?.lastChild?.textContent);
-    console.log(inputName?.parentNode?.nextSibling?.nextSibling?.lastChild);
-    console.log(inputName?.parentNode?.nextSibling?.nextSibling?.lastChild?.textContent);
+    const inputName = nameEditRef;
+    const inputPhone = phoneEditRef;
+    const inputEmail = emailEditRef;
+
+    const input = tableRef.current?.querySelectorAll("input")[index];
+    console.log(input);
+
     setContactList(
       produce((state) => {
-        const item = state.find((item) => item.id === id);
+        const item = state.find((item,) => item.id === id);
         if (item) {
-          item.name = inputName?.value;
-          item.phone = inputPhone?.value;
-          item.email = inputEmail?.value;
+          item.name = inputName?.current?.value;
+          item.phone = inputPhone?.current?.value;
+          item.email = inputEmail?.current?.value;
           item.isEdit = false;
         }
       })
@@ -131,19 +143,19 @@ const Contact = () => {
               <td className="me-1" style={{ width: "80px" }}>
                 {!item.isEdit && item.name}
                 {item.isEdit && (
-                  <input type="text" className="txt-name" defaultValue={item.name} ref={nameInputRef} />
+                  <input type="text" className="txt-name" defaultValue={item.name} ref={nameEditRef} />
                 )}
               </td>
               <td className="me-1" style={{ width: "140px" }}>
                 {!item.isEdit && item.phone}
                 {item.isEdit && (
-                  <input type="text" className="txt-phone" defaultValue={item.phone} ref={phoneInputRef} />
+                  <input type="text" className="txt-phone" defaultValue={item.phone} ref={phoneEditRef} />
                 )}
               </td>
               <td className="me-1" style={{ width: "150px" }}>
                 {!item.isEdit && item.email}
                 {item.isEdit && (
-                  <input type="text" className="txt-email" defaultValue={item.email} ref={emailInputRef} />
+                  <input type="text" className="txt-email" defaultValue={item.email} ref={emailEditRef} />
                 )}
               </td>
               <td className="me-1" style={{ width: "35px" }}>

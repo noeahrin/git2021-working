@@ -1,5 +1,6 @@
 
 import { useRef } from "react";
+import Feed from "./Feed";
 import { FeedState } from "./type";
 
 interface ModalProp {
@@ -9,6 +10,7 @@ interface ModalProp {
 }
 
 const FeedEditModal = ({ item, onClose, onSave }: ModalProp) => {
+
   const postRef = useRef<HTMLTextAreaElement>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   let dataUrl: string | undefined;
@@ -40,6 +42,7 @@ const FeedEditModal = ({ item, onClose, onSave }: ModalProp) => {
       fileType: fileType,
       createTime: item.createTime,
     };
+    console.log(feed);
     onSave(feed);
   };
 
@@ -87,12 +90,13 @@ const FeedEditModal = ({ item, onClose, onSave }: ModalProp) => {
               입력
             </button>
           </div>
-          <div className="media">
+          { }
+          <div className="media text-center mt-4">
             {
               item.fileType === "video/mp4"
-                ? <video src={item.dataUrl} controls />
+                ? <video src={item.dataUrl} style={{ width: "80%" }} controls />
                 : item.fileType === "image/jpeg" || item.fileType === "image/png"
-                  ? <img src={item.dataUrl} alt="feed" style={{ width: "100%" }} />
+                  ? <img src={item.dataUrl} alt="feed" style={{ width: "80%" }} />
                   : <img src={item.dataUrl} alt="feed" style={{ display: "none" }} />
             }
           </div>
