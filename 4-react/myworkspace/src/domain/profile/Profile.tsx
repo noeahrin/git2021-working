@@ -14,7 +14,7 @@ interface ProfileState {
 const Profile = () => {
   const [profile, setProfile] = useState<ProfileState>({
     image: penguin,
-    username: "Daekeun Ko",
+    username: "JIHWAN SEO",
   });
 
   const [isShow, setIsShow] = useState(false); // 프로필 상세보기 제어

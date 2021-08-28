@@ -37,10 +37,10 @@
     const ulList = document.querySelector("#ul-list");
     const formInput = document.querySelector("#form-input");
 
-    const liTmpl = /*html*/ `
+    const liTmpl = `
       <li data-id="@id" class="list-group-item">
         <button class="btn btn-outline-secondary btn-sm remove">삭제</button>          
-        ${txtMemo.value}
+        @memo
       </li>    
     `
 
