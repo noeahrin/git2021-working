@@ -19,7 +19,7 @@ const getTimeString = (unixtime: number) => {
   return `${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString()}`;
 };
 
-const TodoInlineEdit = () => {
+const Todo = () => {
   // todo 여러건에 대한 state
   // 참고) new Date().getTime() -> unix time 생성됨
   const [todoList, setTodoList] = useState<TodoState[]>([
@@ -131,11 +131,31 @@ const TodoInlineEdit = () => {
 
   const save = (id: number, index: number) => {
     console.log(ulRef.current);
+    console.log(index);
 
     // ul 밑에 있는 입력박스중에서 index번째 입력박스만 선택
-    const input = ulRef.current?.querySelectorAll("input")[index];
+    // 버그: item index와 input index가 일치하지 않음, input박스는 안 열렸을 수도 있기 때문
+    // const input = ulRef.current?.querySelectorAll("input")[index];
 
+    // 2021.08.28 버그 수정
+    // ul > li[index] 밑에 input박스를 찾음
+    const input = ulRef.current?.querySelectorAll("li")[index].querySelector("input");
+    // console.log(li);
+    console.log(input);
 
+    // immer 없이 map함수로 새로운 배열을 반환 후 변경
+    // setTodoList(
+    //   todoList.map((item) => {
+    //     // 해당 id의 item의 값을 변경
+    //     if (item.id === id) {
+    //       item.memo = input?.value;
+    //       item.modifyTime = new Date().getTime();
+    //       item.isEdit = false;
+    //     }
+
+    //     return item;
+    //   })
+    // );
 
     // immer를 사용하여 해당 요소를 직접변경
     setTodoList(
@@ -151,7 +171,7 @@ const TodoInlineEdit = () => {
   };
 
   return (
-    <div>
+    <>
       <h2 className="text-center my-5">할 일 관리</h2>
       <form
         className="d-flex"
@@ -260,8 +280,8 @@ const TodoInlineEdit = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 
-export default TodoInlineEdit;
+export default Todo;

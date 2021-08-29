@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import produce from "immer";
+import { createNoSubstitutionTemplateLiteral } from "typescript";
 
 interface ContactState {
   id: number;
@@ -26,9 +27,7 @@ const Contact = () => {
   const emailInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const tableRef = useRef<HTMLTableElement>(null);
-  const nameEditRef = useRef<HTMLInputElement>(null);
-  const phoneEditRef = useRef<HTMLInputElement>(null);
-  const emailEditRef = useRef<HTMLInputElement>(null);
+
 
 
   const tbodyTr = tableRef.current?.querySelectorAll("tr");
@@ -85,20 +84,30 @@ const Contact = () => {
 
   const save = (id: number, index: number) => {
 
-    const inputName = nameEditRef;
-    const inputPhone = phoneEditRef;
-    const inputEmail = emailEditRef;
+    // 방법 1
+    // item index와 tr index가 같아서 tr 안에서 input을 찾아야함
+    // tr이 thead tbody tfoot에 총 3개 있음
+    const inputName = tableRef.current?.querySelectorAll("tr")[index + 1].querySelectorAll("input")[0];
+    const inputPhone = tableRef.current?.querySelectorAll("tr")[index + 1].querySelectorAll("input")[1];
+    const inputEmail = tableRef.current?.querySelectorAll("tr")[index + 1].querySelectorAll("input")[2];
 
-    const input = tableRef.current?.querySelectorAll("input")[index];
-    console.log(input);
+    // 방법 2
+    // td에서 찾음
+    // const inputName = tableRef.current?.querySelectorAll("td")[6 * index + 1].querySelector("input");
+    // const inputPhone = tableRef.current?.querySelectorAll("td")[6 * index + 2].querySelector("input");
+    // const inputEmail = tableRef.current?.querySelectorAll("td")[6 * index + 3].querySelector("input");
+    console.log(index);
+    console.log(inputName);
+    console.log(inputPhone);
+    console.log(inputEmail);
 
     setContactList(
       produce((state) => {
         const item = state.find((item,) => item.id === id);
         if (item) {
-          item.name = inputName?.current?.value;
-          item.phone = inputPhone?.current?.value;
-          item.email = inputEmail?.current?.value;
+          item.name = inputName?.value;
+          item.phone = inputPhone?.value;
+          item.email = inputEmail?.value;
           item.isEdit = false;
         }
       })
@@ -141,22 +150,25 @@ const Contact = () => {
 
               </td>
               <td className="me-1" style={{ width: "80px" }}>
-                {!item.isEdit && item.name}
-                {item.isEdit && (
-                  <input type="text" className="txt-name" defaultValue={item.name} ref={nameEditRef} />
-                )}
+                {
+                  item.isEdit
+                    ? <input type="text" className="txt-name" defaultValue={item.name} />
+                    : item.name
+                }
               </td>
               <td className="me-1" style={{ width: "140px" }}>
-                {!item.isEdit && item.phone}
-                {item.isEdit && (
-                  <input type="text" className="txt-phone" defaultValue={item.phone} ref={phoneEditRef} />
-                )}
+                {
+                  item.isEdit
+                    ? <input type="text" className="txt-phone" defaultValue={item.phone} />
+                    : item.phone
+                }
               </td>
               <td className="me-1" style={{ width: "150px" }}>
-                {!item.isEdit && item.email}
-                {item.isEdit && (
-                  <input type="text" className="txt-email" defaultValue={item.email} ref={emailEditRef} />
-                )}
+                {
+                  item.isEdit
+                    ? <input type="text" className="txt-email" defaultValue={item.email} />
+                    : item.email
+                }
               </td>
               <td className="me-1" style={{ width: "35px" }}>
 
