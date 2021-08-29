@@ -57,16 +57,17 @@ const Contact = () => {
     setContactList(
       produce((state) => {
         state.splice(index, 1);
+        // console.log(contactList[0].id);
+        // 삭제후 id 재정렬
+        state.map((item, index) => (
+          item.id = contactList[0].id - index - 1
+        ))
       })
     );
 
 
-    const tbodyTr = tableRef.current?.querySelectorAll("tr");
-    console.log(id);
-    console.log(tbodyTr?.length);
-    console.log(contactList.length);
 
-    id = contactList.length;
+
   };
 
   const edit = (id: number, mod: boolean) => {
@@ -84,6 +85,8 @@ const Contact = () => {
 
   const save = (id: number, index: number) => {
 
+    // item index와 input index가 일치하지 않아서
+
     // 방법 1
     // item index와 tr index가 같아서 tr 안에서 input을 찾아야함
     // tr이 thead tbody tfoot에 총 3개 있음
@@ -92,7 +95,7 @@ const Contact = () => {
     const inputEmail = tableRef.current?.querySelectorAll("tr")[index + 1].querySelectorAll("input")[2];
 
     // 방법 2
-    // td에서 찾음
+    // td에서 input 찾음
     // const inputName = tableRef.current?.querySelectorAll("td")[6 * index + 1].querySelector("input");
     // const inputPhone = tableRef.current?.querySelectorAll("td")[6 * index + 2].querySelector("input");
     // const inputEmail = tableRef.current?.querySelectorAll("td")[6 * index + 3].querySelector("input");
