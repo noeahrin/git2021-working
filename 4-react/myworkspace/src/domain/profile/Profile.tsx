@@ -1,21 +1,35 @@
 import { useRef, useState } from "react";
-import { penguin } from "../../common/data";
+// import { penguin } from "../../common/data";
+import { useDispatch, useSelector } from "react-redux";  // redux state를 조회할 수 있는 함수
+import { AppDispatch, RootState } from "../../store";
 
 // 모듈명(컴포넌트명).module.scss
 // 해당 컴포넌트에서만 사용할 스타일시트
 // import 스타일변수 from "./모듈명.module.scss"
 import style from "./Profile.module.scss";
+import { saveProfile } from "./profileSlice";
 
-interface ProfileState {
-  image: string | undefined;
-  username: string | undefined;
-}
+// interface ProfileState {
+//   image: string | undefined;
+//   username: string | undefined;
+// }
 
 const Profile = () => {
-  const [profile, setProfile] = useState<ProfileState>({
-    image: penguin,
-    username: "JIHWAN SEO",
-  });
+  // localstate/componentstate
+  // 컴포넌트 내부 또는 event-up, props-down으로 공유 가능함
+  // const [profile, setProfile] = useState<ProfileState>({
+  //   image: penguin,
+  //   username: "JIHWAN SEO",
+  // });
+
+  //global(redux) state
+  // root state에서 profile state를 꺼내옴
+  // useSelector() 함수의 매개변수로 state를 리턴하는 함수를 넣어줌
+  // useSelector 함수에서 return 하는 함수의 매개변수로 root state를 넣어줌
+
+  const profile = useSelector((state: RootState) => state.profile);
+
+  const dispatch = useDispatch<AppDispatch>();
 
   const [isShow, setIsShow] = useState(false); // 프로필 상세보기 제어
   const [isEdit, setIsEdit] = useState(false); // 수정모드 제어
@@ -36,8 +50,26 @@ const Profile = () => {
     }
   };
 
-  const save = () => {
-    setProfile({ image: url, username: inputRef.current?.value });
+  // 프로필 수정
+  const handleSave = () => {
+    // local(conponent) state 처리
+    // setProfile({ image: url, username: inputRef.current?.value });
+
+    // global(redux) state 처리
+
+    // action creator의 반환 객체로 dispatch하는 방법
+    // dispatch(액션함수(페이로드));
+    dispatch(saveProfile({ image: url, username: inputRef.current?.value }));
+
+    // 액션함수(페이로드) => 액션객체 {type, payload}
+
+    // action 객체를 바로 dispatch하는 방법
+    // dispatch(액션객체)
+    // dispatch({
+    //   type: "profile/saveProfile",
+    //   payload: { image: url, username: inputRef.current?.value },
+    // });
+
     setIsEdit(false);
   };
 
@@ -142,7 +174,7 @@ const Profile = () => {
                     className="link-secondary fs-6 text-nowrap me-2"
                     onClick={(e) => {
                       e.preventDefault();
-                      save();
+                      handleSave();
                     }}
                   >
                     save

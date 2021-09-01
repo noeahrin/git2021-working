@@ -64,10 +64,6 @@ const Contact = () => {
         ))
       })
     );
-
-
-
-
   };
 
   const edit = (id: number, mod: boolean) => {
@@ -77,7 +73,6 @@ const Contact = () => {
         const item = state.find((item) => item.id === id);
         if (item) {
           item.isEdit = mod;
-
         }
       })
     );
@@ -99,10 +94,10 @@ const Contact = () => {
     // const inputName = tableRef.current?.querySelectorAll("td")[6 * index + 1].querySelector("input");
     // const inputPhone = tableRef.current?.querySelectorAll("td")[6 * index + 2].querySelector("input");
     // const inputEmail = tableRef.current?.querySelectorAll("td")[6 * index + 3].querySelector("input");
-    console.log(index);
-    console.log(inputName);
-    console.log(inputPhone);
-    console.log(inputEmail);
+    // console.log(index);
+    // console.log(inputName);
+    // console.log(inputPhone);
+    // console.log(inputEmail);
 
     setContactList(
       produce((state) => {
@@ -174,7 +169,6 @@ const Contact = () => {
                 }
               </td>
               <td className="me-1" style={{ width: "35px" }}>
-
                 {!item.isEdit && (
                   <button
                     className="btn btn-outline-secondary btn-sm ms-2 me-1 text-nowrap"

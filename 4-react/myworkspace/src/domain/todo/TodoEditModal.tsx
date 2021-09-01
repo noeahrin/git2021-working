@@ -1,27 +1,32 @@
 import { useRef } from "react";
-import { TodoState } from "./type";
-
+import { TodoItemState } from "./type";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 // { 함수속성 }
 // 함수속성의 타입: (매개변수타입) => 리턴타입
 // 함수(ex. 부모state제어)를 부모 컴포넌트로 부터 매개변수(prop)를 받음
 // 자식컴포넌트에서 이벤트가 발생하면 prop으로 받은 함수를 실행
 
 interface ModalProp {
-  item: TodoState;
+  item: TodoItemState;
   onClose: () => void; // 콜백함수
-  onSave: (editItem: TodoState) => void; // 콜백함수
+  onSave: (editItem: TodoItemState) => void; // 콜백함수
 }
 
 const TodoEditModal = ({ item, onClose, onSave }: ModalProp) => {
+
+  const profile = useSelector((state: RootState) => state.profile);
+
   const inputRef = useRef<HTMLInputElement>(null);
 
   const save = () => {
-    const todo: TodoState = {
+    const todo: TodoItemState = {
       id: item.id,
+      username: profile.username,
       memo: inputRef.current?.value, // 수정된 입력값
+      image: profile.image,
       createTime: item.createTime,
     };
-
     onSave(todo);
   };
 
