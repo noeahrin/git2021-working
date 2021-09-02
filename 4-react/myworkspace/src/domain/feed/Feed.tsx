@@ -42,8 +42,7 @@ const Feed = () => {
   const content = (dataUrl: string | undefined, fileType: string | undefined) => {
 
     const feed: FeedState = {
-      id: feedList.length > 0 ? feedList[0].id + 1 : 1,
-      // optional chaning
+      id: feedList.length > 0 ? feedList[0].id + 1 : 1,      // optional chaning
       content: postRef.current?.value,
       dataUrl: dataUrl,
       fileType: fileType,
