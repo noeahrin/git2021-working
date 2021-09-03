@@ -90,6 +90,8 @@ const Contact = () => {
     const inputEmail = tableRef.current?.querySelectorAll("tr")[index + 1].querySelectorAll("input")[2];
 
     // 방법 2
+    // 만약에 input = querySelector("input")이라면 input이 나타내는건 input인데 span>input 이런거라면 element로
+    // 표시되기에 뒤에 as HTMLInputElement 써줘야함
     // td에서 input 찾음
     // const inputName = tableRef.current?.querySelectorAll("td")[6 * index + 1].querySelector("input");
     // const inputPhone = tableRef.current?.querySelectorAll("td")[6 * index + 2].querySelector("input");
@@ -113,7 +115,7 @@ const Contact = () => {
   };
   return (
     <>
-      <h2 className="text-center my-5">Contact</h2>
+      <h2 className="text-center my-5">Contacts</h2>
       <form className="d-flex" ref={formRef} onSubmit={(e) => e.preventDefault()}>
         <input type="text" className="form-control me-1" placeholder="이름" ref={nameInputRef} />
         <input type="text" className="form-control me-1" placeholder="전화번호" ref={phoneInputRef} />

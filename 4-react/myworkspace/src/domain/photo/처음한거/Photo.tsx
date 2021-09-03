@@ -48,7 +48,7 @@ const Photo = () => {
                 style={{ cursor: "pointer" }}
                 alt={item.title}
                 onClick={() => {
-                  history.push(`/photos/${item.id}`);
+                  history.push(`/photos/detail/${item.id}`);
                 }}
               />
               <div className="card-body">

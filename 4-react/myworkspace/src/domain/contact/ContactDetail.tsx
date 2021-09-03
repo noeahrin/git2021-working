@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
+import { removeContact } from "./contactSlice";
 
 const ContactDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -55,6 +56,7 @@ const ContactDetail = () => {
         <button
           className="btn btn-primary"
           onClick={() => {
+            dispatch(removeContact(+id));
             history.push("/contacts");
           }}
         >

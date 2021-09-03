@@ -39,6 +39,7 @@ const Photo = () => {
                 height={16}
                 src={item.profileUrl}
                 alt={item.username}
+
               />
               <span>{item.username}</span>
             </div>
@@ -47,6 +48,9 @@ const Photo = () => {
               className="card-img-top"
               style={{ cursor: "pointer" }}
               alt={item.title}
+              onClick={() => {
+                history.push(`/photos/detail/${item.id}`);
+              }}
             />
             <div className="card-body">
               <h5 className="card-title">{item.title}</h5>

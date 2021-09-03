@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { iteratorSymbol } from "immer/dist/internal";
 import { penguin } from "../../common/data";
 
 
@@ -49,8 +50,28 @@ const contactSlice = createSlice({
       const contact = action.payload;
       state.data.unshift(contact);
     },
+    removeContact: (state, action: PayloadAction<number>) => {
+      const id = action.payload;
+      // id로 index를 찾은 후 1개 삭제
+      state.data.splice(
+        state.data.findIndex((item) => item.id === id),
+        1
+      );
+    },
+    modifyContact: (state, action: PayloadAction<ContactItem>) => {
+      const contact = action.payload;
+      const item = state.data.find((item) => item.id === contact.id);
+      if (item) {
+
+        item.name = contact.name;
+        item.phone = contact.phone;
+        item.email = contact.email;
+        item.description = contact.description;
+        item.createTime = contact.createTime;
+      };
+    },
   },
 });
-export const { addContact } = contactSlice.actions;
+export const { addContact, removeContact, modifyContact } = contactSlice.actions;
 
 export default contactSlice.reducer;
