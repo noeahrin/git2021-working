@@ -1,0 +1,12 @@
+1. 변수는 초기값이 저장되지 않은 상태에서 읽을 수 있다.  틀림
+2. modeNmae, class, $value, _age 변수명으로 사용 가능
+3. byte short char int long
+                    float double
+    boolean
+4. 타입: 정수, 실수
+   변수이름: age, price
+   리터럴: 10, 3.14
+5. 3   short는 2바이트, double은 8바이트라서
+6. 4   char var = (char) strValue 안됨, String은 문자열인데 char은 문자라서
+7. 2 뒤에 문자L 붙어서
+8. 1   byte resukt = byteValue + byteValue 안됨

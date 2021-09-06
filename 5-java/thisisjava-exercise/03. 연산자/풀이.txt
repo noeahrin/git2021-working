@@ -1,0 +1,17 @@
+1. 3번
+2. 11 + 20 = 31
+3. 가
+4. pencils / students, pencils % students
+5. value - value % 300
+6. (lengthTop + lengthBottom) * height / 2
+7. true, false
+8. Double.isNaN(z)
+
+// 1. static method
+if (Double.isNaN(doubleValue)) {
+    ...
+}
+// 2. object's method
+if (doubleObject.isNan()) {
+    ...
+}
