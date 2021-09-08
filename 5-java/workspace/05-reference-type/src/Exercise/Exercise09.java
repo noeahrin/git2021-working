@@ -39,19 +39,29 @@ public class Exercise09 {
 					System.out.println("scores[" + i + "]: " + scores[i]);
 				}
 				break;
+//			case 4:
+//				// 최고점수와 평균점수를 출력
+//				int max = 0;
+//				double sum = 0.0;
+//
+//				for (int i = 0; i < scores.length; i++) {
+//					if (max < scores[i]) {
+//						max = scores[i];
+//					}
+//					sum += scores[i];
+//				}
+//				System.out.println("최고 점수: " + max);
+//				System.out.println("평균 점수: " + sum / studentNum);
+//				break;
 			case 4:
-				// 최고점수와 평균점수를 출력
+				int sum = 0;
 				int max = 0;
-				double sum = 0.0;
-
-				for (int i = 0; i < scores.length; i++) {
-					if (max < scores[i]) {
-						max = scores[i];
-					}
-					sum += scores[i];
+				for (int score : scores) {
+					sum += score;
+					max = score > max ? score : max;
 				}
 				System.out.println("최고 점수: " + max);
-				System.out.println("평균 점수: " + sum / studentNum);
+				System.out.println("평균 점수: " + sum * 1.0 / scores.length);
 				break;
 			case 5:
 				// run false로 반복문 탈출
