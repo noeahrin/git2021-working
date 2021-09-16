@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { iteratorSymbol } from "immer/dist/internal";
 import { penguin } from "../../common/data";
+import Contact from "./Contact";
+import ContactDetail from "./ContactDetail";
 
 
 export interface ContactItem {

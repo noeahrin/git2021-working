@@ -1,26 +1,44 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import produce from "immer";
 import { createNoSubstitutionTemplateLiteral } from "typescript";
 
-interface ContactState {
+// contact 1건에 대한 타입
+interface ContactItemState {
   id: number;
   name: string | undefined;
   phone: string | undefined;
   email: string | undefined;
-  createTime?: number;
+  createdTime?: number;
   isEdit?: boolean;
 }
 
-// const getTimeString = (unixtime: number) => {
-//   const dateTime = new Date(unixtime);
-//   return `${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString()}`;
-// };
+// 서버로부터 받아오는 데이터 1건에 대한 타입
+interface ContactItemResponse {
+  id: number;
+  name: string;
+  phone: string;
+  email: string;
+  createdTime: number;
+}
+
+
+
+
+const getTimeString = (unixtime: number) => {
+  const dateTime = new Date(unixtime);
+  return `${dateTime.toLocaleDateString()} ${dateTime.toLocaleTimeString()}`;
+};
 
 const Contact = () => {
-  const [contactList, setContactList] = useState<ContactState[]>([
-    { id: 2, name: "Jhon", phone: "010-1234-5678", email: "John@gmail.com" },
-    { id: 1, name: "Smith", phone: "010-1111-2222", email: "Smith@gmail.com" },
+  // contact 여러건에 대한 state
+  const [contactList, setContactList] = useState<ContactItemState[]>([
+    // { id: 2, name: "Jhon", phone: "010-1234-5678", email: "John@gmail.com" },
+    // { id: 1, name: "Smith", phone: "010-1111-2222", email: "Smith@gmail.com" },
   ]);
+
+  // 데이터 로딩처리 여부를 표시
+  const [isLoading, setLoading] = useState<boolean>(true);
+
 
   const nameInputRef = useRef<HTMLInputElement>(null);
   const phoneInputRef = useRef<HTMLInputElement>(null);
@@ -30,14 +48,38 @@ const Contact = () => {
 
 
 
-  const tbodyTr = tableRef.current?.querySelectorAll("tr");
-  const tbodyTrNum = tbodyTr?.length;
+  useEffect(() => {
+
+    console.log("--1. mounted--");
+
+    fetch("http://localhost:8080/contacts")
+      .then((res) => res.json())
+      .then((data: ContactItemResponse[]) => {
+        console.log("--2. fetch completed--");
+        console.log(data);
+
+        // 서버로부터 받은 데이터를 state 객체로 변환함
+        const contacts = data.map((item) => ({
+          id: item.id,
+          name: item.name,
+          phone: item.phone,
+          email: item.email,
+          createdTime: item.createdTime,
+        })) as ContactItemState[];
+
+        setLoading(false); // 로딩중 여부 state 업데이트
+        setContactList(contacts); // todo state 업데이트
+
+
+      });
+    console.log("--3. complete--");
+  }, []);
 
 
 
   const add = () => {
     if (nameInputRef.current?.value && phoneInputRef.current?.value && emailInputRef.current?.value) {
-      const contact: ContactState = {
+      const contact: ContactItemState = {
         id: contactList.length > 0 ? contactList[0].id + 1 : 1,
         name: nameInputRef.current?.value,
         phone: phoneInputRef.current?.value,
@@ -88,7 +130,7 @@ const Contact = () => {
     const inputName = tableRef.current?.querySelectorAll("tr")[index + 1].querySelectorAll("input")[0];
     const inputPhone = tableRef.current?.querySelectorAll("tr")[index + 1].querySelectorAll("input")[1];
     const inputEmail = tableRef.current?.querySelectorAll("tr")[index + 1].querySelectorAll("input")[2];
-
+    console.log(tableRef.current?.querySelectorAll('tr').length);
     // 방법 2
     // 만약에 input = querySelector("input")이라면 input이 나타내는건 input인데 span>input 이런거라면 element로
     // 표시되기에 뒤에 as HTMLInputElement 써줘야함

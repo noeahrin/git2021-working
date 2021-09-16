@@ -26,14 +26,6 @@ const Contact = () => {
   const contact = useSelector((state: RootState) => state.cotact);
   const history = useHistory();
 
-  const tableRef = useRef<HTMLTableElement>(null);
-  const tableTr = tableRef.current?.querySelectorAll('tr');
-  let idLnegth = 0;
-  if (tableTr) {
-    idLnegth = tableTr.length - 1;
-  }
-  console.log(idLnegth);
-
 
   return (
     <div style={{ width: "80vw" }} className="mx-auto">
@@ -49,7 +41,7 @@ const Contact = () => {
           추가
         </button>
       </div>
-      <table className="table table-hover mt-1" ref={tableRef}>
+      <table className="table table-hover mt-1">
         <thead>
           <tr>
             <th>#</th>

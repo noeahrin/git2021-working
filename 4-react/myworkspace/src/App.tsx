@@ -22,6 +22,7 @@ import Profile from "./domain/profile/Profile";
 // Lazy-Loading 처리
 // 컴포넌트를 방문하는 시점에 로딩함
 const Todo = lazy(() => import("./domain/todo/Todo"));
+const todoInlineEdit = lazy(() => import("./domain/todo/TodoInlineEdit"));
 const Feed = lazy(() => import("./domain/feed/Feed"));
 const ContactInlineEdit = lazy(() => import("./domain/contact/ContactInlineEdit"));
 const Photo = lazy(() => import("./domain/photo/Photo"));
@@ -55,6 +56,9 @@ function App() {
                 <Link to="/todo">Todo</Link>
               </li>
               <li>
+                <Link to="/todoInlineEdit">TodoInlineEdit</Link>
+              </li>
+              <li>
                 <Link to="/feeds">Feeds</Link>
               </li>
               <li>
@@ -78,6 +82,7 @@ function App() {
                 {/* 해당 경로에 대해서 로딩할 컴포넌트 목록을 작성 */}
                 <Route path="/" component={Home} exact />
                 <Route path="/todo" component={Todo} />
+                <Route path="/todoInlineEdit" component={todoInlineEdit} />
                 <Route path="/feeds" component={Feed} />
                 <Route path="/contactInlineEdit" component={ContactInlineEdit} />
                 <Route path="/photos" component={Photo} exact />

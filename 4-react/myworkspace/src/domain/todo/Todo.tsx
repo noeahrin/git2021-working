@@ -56,7 +56,6 @@ const Todo = () => {
       id: todoList.length > 0 ? todoList[0].id + 1 : 1,
       memo: inputRef.current?.value,
       username: profile.username,
-      image: profile.image,
       createTime: new Date().getTime(),
     };
     setTodoList(
@@ -102,8 +101,6 @@ const Todo = () => {
         const item = state.find((item) => item.id === editItem.id);
         if (item) {
           item.memo = editItem.memo;
-          item.username = editItem.username;
-          item.image = editItem.image;
         }
       })
     );
@@ -116,7 +113,7 @@ const Todo = () => {
     <div style={{ width: "40vw" }} className="mx-auto">
       <h2 className="text-center my-5">할 일 관리</h2>
       {/* profile 정보 확인용 */}
-      <div>
+      {/* <div>
         <img
           src={profile.image}
           width={150}
@@ -124,7 +121,7 @@ const Todo = () => {
           alt={profile.username}
         />
         <span>{profile.username}</span>
-      </div>
+      </div> */}
       {/* isEdit state가 true일 때만 Modal 창이 보임 */}
       {isEdit && (
         <TodoEditModal
@@ -165,19 +162,7 @@ const Todo = () => {
             <div className="w-100">
               <span className="me-1">{item.memo}</span>
               <span style={{ fontSize: "0.75rem" }}>
-                - <img
-                  src={item.image}
-                  style={{
-                    width: "24px",
-                    height: "24px",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                    borderRadius: "50%"
-                  }}
-                  alt={profile.username}
-                />
-                {item.username}, {getTimeString(item.createTime)}
+                - {item.username}, {getTimeString(item.createTime)}
               </span>
             </div>
             <button
