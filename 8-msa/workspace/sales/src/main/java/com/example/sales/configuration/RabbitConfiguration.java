@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfiguration {
 
+	// 객체 -> JSON
 	@Bean
 	public MessageConverter rabbitMEssageConverter() {
 		return new Jackson2JsonMessageConverter();
