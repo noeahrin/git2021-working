@@ -1,4 +1,4 @@
-package classnew;
+package classNew;
 
 public class StudentExample {
 

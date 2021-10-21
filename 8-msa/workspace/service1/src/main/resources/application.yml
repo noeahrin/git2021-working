@@ -1,0 +1,5 @@
+server:  port: 5050spring:
+  application:
+    name: service-1
+eureka:  client:    service-url:
+      defaultZone: http://localhost:8761/eureka/  instance:    hostname: localhostmanagement:  endpoints:    web:      exposure:        include: "*"        ---spring:  profiles: deveureka:  client:    service-url:      # service registry 주소      defaultZone: http://ec2-52-78-27-74.ap-northeast-2.compute.amazonaws.com:8761/eureka/  instance:    # 본인이 원래 돌리고 있었던 인스턴스 주소    hostname: ec2-13-124-138-226.ap-northeast-2.compute.amazonaws.com

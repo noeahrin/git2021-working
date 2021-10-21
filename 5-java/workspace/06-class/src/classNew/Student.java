@@ -1,4 +1,4 @@
-package classnew;
+package classNew;
 
 // 클래스의 이름은 Pascal Case
 // 대문자 단어로 시작

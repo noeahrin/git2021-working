@@ -1,0 +1,60 @@
+자바 어노테이션(Java Annotation):
+- 자바 소스코드에 추가하여 사용할 수 있는 메타데이터의 일종 
+	[metadata: Constructed data with a purpose, 데이터에 관한 구조화된 데이터로, 다른 데이터를 설명해 주는 데이터]
+- 보통 @ 을 앞에 붙여서 사용
+- JDK1.5v 이상에서 사용 가능
+- 클래스파일에 임베디드(≈내장)되어 컴파일러에 의해 생성된 후 자바 가상머신에 포함되어 작동
+
+@SpringBootApplication:
+- 스프링 부트의 가장 기본적인 설정을 선언해 줌
+- ∋ { @SpringBootConfiguration, @EnableAutoConfiguration, @ComponentScan } 세가지 역할을 수행
+
+@SpringBootConfiguration:
+- 의존성 주입을 할 수 있도록 함. 객체관리자를 생성(IoC 컨테이너)
+- @Configuration과 유일한 차이점은 구성을 자동으로 찾을 수 있다고 함
+  즉 @SpringBootConfiguration은 한 서비스 내에 2개 이상 사용 못함
+
+@EnableAutoConfiguration:
+- 사용하는 의존성(라이브러리)에 따라서 자동으로 환경을 구성함
+   -> Tomcat 웹서버 실행, Dispatch Servelt 객체 생성
+	[Apache Tomcat: 아파치 SW 재단에서 개발한 서블릿 컨테이너(웹 컨테이너)만 있는 웹 애플리케이션 서버]
+	[Servlet(서블릿): Client의 요청을 처리하고, 그 결과를 반환하는 Servlet 클래스의 구현 규칙을 지킨 자바 웹 프로그래밍 기술]
+- Configuration을 자동으로 사용하게, 즉 Bean을 등록하는 자바 설정 파일
+
+@ComponentScan:
+- 컴포넌트들을 검색하여 (main클래스 동위/하위 패키지들에서) 싱글턴(Singleton)으로 객체생성을 함
+	[Singleton: 인스턴스가 1개만 생성되는 특징을 가짐, 자바의 싱글턴 공통 특징은 private construvtor를 갖고 static method를 사용]
+
+- @Component, @Configuration, @Service, @Repository, @Controller, @RestController
+- 위의 어노테이션이 선언된 하위패키지에서 위와 같은 어노테이션을 스캔하여 Bean으로 등록해 줌
+
+@RestController
+- ∋ { @Controller, @ResponseBody } 이 두개가 결합된 어노테이션, Spring Framework 4.x 이상부터 사용 가능
+- 컨트롤러 클래스 하위 메서드에 @ResponseBody 어노테이션을 붙이지 않아도 문자열과 JSON등을 전송 가능
+
+@ResponseBody:
+- http요청의 본문(body)이 그대로 전달됨
+- 일반적인 GET/POST의 요청 parameter라면 @ResponseBody 사용 안함
+- xml(eXtensible Markup Language)이나 json(JavaScript Object Notation) 기반의 메시지를 사용하는 요청인 경우 매우 유용
+- HTTP 요청의 body 내용을 통째로 자바객체로 변환후 매필된 메서드 파라미터로 전달
+
+@Controller: 
+- 사용자의 요청이 진입하는 지점(entry point)
+- 요청에 따라 어떤 처리를 할지 결정만 해주고 실질적인 처리는 서비스(Layered Architecture)에서 담당
+- 사용자에게 view(또는 서버에서 처리된 데이터를 포함하는 view)를 응답으로 보내줌 (View를 반환하기 위해 사용 또는 Data를 반환하는 경우도 있음)
+
+@RequestMapping:
+- 특정 URL로 요청을 보내면 Controller에서 어떠한 방식으로 처리할지 정의하는데 이때 특정 메서드와 매핑하기 위해 사용됨
+
+@GetMapping:
+- GET 요청을 하는 API(Application Programming Interface)의 어노테이션, 즉 HTTP 전송 박식 타입
+- 데이터를 가져올 때 사용
+	[Select 기능을 원한다면 GET메서드, 캐시가 남아있어 전송 속도 빠름]
+
+@PostMapping:
+- POST 요청을 하는 API의 어노테이션, 즉 HTTP 전송 박식 타입
+- 데이터를 게시할 때 사용
+	[Upgrade 기능을 원한다면 POST메서드, 캐시가 남지 않아 보안적인 면에서 유리]
+
+@RequestBody:
+- Client가 전송하는 JSON(Application/JSON)형태의 HTTP Body 내용을 Java Object로 변환시켜주는 역할을 함

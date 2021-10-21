@@ -1,13 +1,13 @@
 package exam;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class BankApplication {
 	// 계좌목록 Map 객체
 	// Map<키타입, 값타입> 변수명 = new HashMap<키타입, 값타입>();
-	private static Map<String, Account> accounts = new HashMap<String, Account>();
+	private static Map<String, Account> accounts = new LinkedHashMap<String, Account>();
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {

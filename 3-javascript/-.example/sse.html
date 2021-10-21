@@ -1,0 +1,17 @@
+<html>
+
+<body>
+  <script>
+    const everSource = new EventSource("http://localhost:9091/event");
+
+    // eventSource.onopen = (event) => {
+    //   console.log(event);
+    // }
+
+    eventSource.onmessage = (event) => {
+      console.log(event);
+    }
+  </script>
+</body>
+
+</html>
